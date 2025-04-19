@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5ikb3enwxmpq"]
+
+[ext_resource type="Texture2D" uid="uid://cjpxetec4i44w" path="res://assets/vampire/vampr_56x80px.png" id="1_j3v10"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0myhr"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(672, 0, 56, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6r7r"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(896, 0, 56, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcwxi"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(728, 0, 56, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7r3l"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(784, 0, 56, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kn01"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(840, 0, 56, 85)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dman"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0myhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6r7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcwxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcwxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7r3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kn01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0myhr")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0myhr"]
+
+[node name="Vampire" type="CharacterBody2D"]
+top_level = true
+light_mask = 2
+motion_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -28)
+sprite_frames = SubResource("SpriteFrames_1dman")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.358147
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -17)
+shape = SubResource("CircleShape2D_0myhr")
