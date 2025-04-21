@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://bwnmps0tmudcj"]
+[gd_scene load_steps=8 format=4 uid="uid://bwnmps0tmudcj"]
 
 [ext_resource type="Texture2D" uid="uid://x6e0x5538ngv" path="res://assets/spaceship/tileset x1.png" id="1_8pli4"]
 [ext_resource type="PackedScene" uid="uid://c5ikb3enwxmpq" path="res://scenes/vampire.tscn" id="2_oujrd"]
 [ext_resource type="Script" uid="uid://db05lyij832rv" path="res://scripts/vampire.gd" id="3_0myhr"]
+[ext_resource type="Script" uid="uid://bipf87ovg1unt" path="res://scripts/bullet_manager.gd" id="4_q6r7r"]
+[ext_resource type="PackedScene" uid="uid://pnk6vj41q5xq" path="res://scenes/fireball.tscn" id="5_qcwxi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oujrd"]
 texture = ExtResource("1_8pli4")
@@ -92,3 +94,7 @@ script = ExtResource("3_0myhr")
 
 [node name="Camera2D" type="Camera2D" parent="Vampire"]
 zoom = Vector2(4, 4)
+
+[node name="BulletManager" type="Node2D" parent="."]
+script = ExtResource("4_q6r7r")
+bullet_scene = ExtResource("5_qcwxi")
