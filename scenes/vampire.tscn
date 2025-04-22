@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5ikb3enwxmpq"]
+[gd_scene load_steps=22 format=3 uid="uid://c5ikb3enwxmpq"]
 
+[ext_resource type="Script" uid="uid://db05lyij832rv" path="res://scripts/vampire.gd" id="1_1ap6k"]
 [ext_resource type="Texture2D" uid="uid://llxuq0dqhiid" path="res://assets/vampire/vampr_color03_skin tone.png" id="1_j3v10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ap6k"]
@@ -146,6 +147,7 @@ size = Vector2(22, 40)
 top_level = true
 light_mask = 2
 motion_mode = 1
+script = ExtResource("1_1ap6k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
@@ -167,3 +169,9 @@ shape = SubResource("RectangleShape2D_j3v10")
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="BoostTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]

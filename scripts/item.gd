@@ -20,6 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 		print("Shadow")
 	elif item_type == 2:
 		print("Dash")
+		body.boost()
 	# delete item
 	queue_free()
 	
