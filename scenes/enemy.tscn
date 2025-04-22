@@ -1,6 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://4y67635ci7ss"]
+[gd_scene load_steps=23 format=3 uid="uid://4y67635ci7ss"]
 
 [ext_resource type="Texture2D" uid="uid://b584yu1vulaxt" path="res://assets/scifi-player/players blue x2.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://bgdh06gu8xenh" path="res://scenes/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://xhhuyrx3gtgm" path="res://scenes/ai.gd" id="3_4ra3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -49,6 +51,22 @@ region = Rect2(128, 192, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
 atlas = ExtResource("1_7p1mj")
 region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p1mj"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1ycm"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(192, 256, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j0cyh"]
 animations = [{
@@ -102,20 +120,51 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p1mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0cyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0wcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1ycm")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0wcc"]
-size = Vector2(27.5, 33.25)
+size = Vector2(18, 18.3125)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
+radius = 22.0907
 
 [node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(4, 4)
+scale = Vector2(1.5, 1.5)
 collision_layer = 4
+script = ExtResource("1_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_j0cyh")
 animation = &"idle"
-frame_progress = 0.578732
+frame_progress = 0.946972
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 16.375)
+position = Vector2(1, -2.84375)
 shape = SubResource("RectangleShape2D_g0wcc")
+
+[node name="AI" type="Node2D" parent="."]
+script = ExtResource("3_4ra3w")
+
+[node name="PlayeDetectionZone" type="Area2D" parent="AI"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayeDetectionZone"]
+shape = SubResource("CircleShape2D_5uy6h")
