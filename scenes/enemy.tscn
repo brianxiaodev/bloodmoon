@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://4y67635ci7ss"]
+[gd_scene load_steps=22 format=3 uid="uid://4y67635ci7ss"]
 
 [ext_resource type="Texture2D" uid="uid://b584yu1vulaxt" path="res://assets/scifi-player/players blue x2.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://bgdh06gu8xenh" path="res://scenes/enemy.gd" id="1_md0e3"]
@@ -140,10 +140,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0wcc"]
-size = Vector2(18, 18.3125)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
-radius = 22.0907
+size = Vector2(14.6667, 18.3125)
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -158,13 +155,8 @@ animation = &"idle"
 frame_progress = 0.946972
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -2.84375)
+position = Vector2(0, -2.84375)
 shape = SubResource("RectangleShape2D_g0wcc")
 
 [node name="AI" type="Node2D" parent="."]
 script = ExtResource("3_4ra3w")
-
-[node name="PlayeDetectionZone" type="Area2D" parent="AI"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayeDetectionZone"]
-shape = SubResource("CircleShape2D_5uy6h")

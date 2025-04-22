@@ -5,6 +5,7 @@ class_name  Bullet
 @onready var kill_timer = $KillTimer
 
 var direction: Vector2 = Vector2.ZERO
+var ignore_body: Node2D = null  # ← Who fired the bullet
 
 
 func _ready() -> void:
@@ -23,3 +24,10 @@ func set_direction(dir : Vector2) -> void:
 
 func _on_kill_timer_timeout() -> void:
 	queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body == ignore_body:
+		return
+	if body.has_method("handle_hit"):
+		body.handle_hit()
+		queue_free()

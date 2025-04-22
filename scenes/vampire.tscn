@@ -139,7 +139,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0myhr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v10"]
+size = Vector2(22, 40)
 
 [node name="Vampire" type="CharacterBody2D"]
 top_level = true
@@ -160,8 +161,8 @@ position = Vector2(20, 10)
 position = Vector2(25, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -17)
-shape = SubResource("CircleShape2D_0myhr")
+position = Vector2(-3, -5)
+shape = SubResource("RectangleShape2D_j3v10")
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.7

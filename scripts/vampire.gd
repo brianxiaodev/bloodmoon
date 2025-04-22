@@ -9,6 +9,8 @@ signal player_fired_bullet(bullet, position, direction)
 @onready var attack_direction = $AnimatedSprite2D/AttackDirection
 @onready var attack_cooldown = $AttackCooldown
 
+var health: int = 100
+
 func _process(_delta: float) -> void:
 	var movement_direction := Vector2.ZERO
 	
@@ -42,11 +44,14 @@ func shoot():
 	
 	if attack_cooldown.is_stopped():
 		var bullet_instance = Bullet.instantiate()
+		bullet_instance.ignore_body = self
 		var direction = (attack_direction.global_position - attack_spawn_point.global_position).normalized()
 		emit_signal("player_fired_bullet", bullet_instance, attack_spawn_point.global_position, direction)
 		attack_cooldown.start()
-	else:
-		pass
+
+func handle_hit():
+	health -= 20
+	print("player hit", health)
 
 #Working code from Grace:
 #signal shoot

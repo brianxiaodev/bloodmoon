@@ -43,6 +43,7 @@ animations = [{
 }]
 
 [node name="Bullet" type="Area2D"]
+collision_mask = 5
 script = ExtResource("1_v8qja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -56,4 +57,5 @@ animation = &"bat"
 wait_time = 3.0
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

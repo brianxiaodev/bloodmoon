@@ -107,4 +107,4 @@ script = ExtResource("4_q6r7r")
 visible = false
 
 [node name="Enemy" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(92, 16)
+position = Vector2(178, 8)
