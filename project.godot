@@ -13,7 +13,6 @@ config_version=5
 config/name="bloodmoon"
 run/main_scene="uid://bwnmps0tmudcj"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [input]
 
