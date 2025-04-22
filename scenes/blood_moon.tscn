@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwnmps0tmudcj"]
+[gd_scene load_steps=8 format=3 uid="uid://bwnmps0tmudcj"]
 
 [ext_resource type="Script" uid="uid://bkexqhv32di1a" path="res://scripts/main.gd" id="1_3kn01"]
 [ext_resource type="PackedScene" uid="uid://p7oobg705p7j" path="res://scenes/map.tscn" id="2_3kn01"]
 [ext_resource type="PackedScene" uid="uid://c5ikb3enwxmpq" path="res://scenes/vampire.tscn" id="2_oujrd"]
-[ext_resource type="Script" uid="uid://db05lyij832rv" path="res://scripts/vampire.gd" id="3_0myhr"]
 [ext_resource type="Script" uid="uid://bipf87ovg1unt" path="res://scripts/bullet_manager.gd" id="4_q6r7r"]
 [ext_resource type="PackedScene" uid="uid://c4u3h3tqj5sn8" path="res://scenes/bullet.tscn" id="6_3kn01"]
 [ext_resource type="PackedScene" uid="uid://4y67635ci7ss" path="res://scenes/enemy.tscn" id="7_1dman"]
@@ -16,7 +15,6 @@ script = ExtResource("1_3kn01")
 
 [node name="Vampire" parent="." instance=ExtResource("2_oujrd")]
 position = Vector2(-3, 19)
-script = ExtResource("3_0myhr")
 Bullet = ExtResource("6_3kn01")
 
 [node name="Camera2D" type="Camera2D" parent="Vampire"]
