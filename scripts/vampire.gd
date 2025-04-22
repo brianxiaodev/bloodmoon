@@ -3,6 +3,9 @@ extends CharacterBody2D
 signal player_fired_bullet(bullet, position, direction)
 
 @export var Bullet: PackedScene
+## bat powerup, scene not yet made
+#@export var Bats: PackedScene
+
 @export var speed = 100
 
 @onready var attack_spawn_point = $AnimatedSprite2D/AttackSpawnPoint
