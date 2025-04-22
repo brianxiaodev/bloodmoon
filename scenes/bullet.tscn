@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c4u3h3tqj5sn8"]
 
 [ext_resource type="Texture2D" uid="uid://cr8ngya30llii" path="res://assets/vampire/projectile bat_36px.png" id="1_v7oki"]
-[ext_resource type="Script" uid="uid://b1ebl0xeo6xwj" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Script" uid="uid://b1ebl0xeo6xwj" path="res://scripts/bullet.gd" id="1_v8qja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
 size = Vector2(26, 21)

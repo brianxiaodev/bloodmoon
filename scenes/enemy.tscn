@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://4y67635ci7ss"]
 
 [ext_resource type="Texture2D" uid="uid://b584yu1vulaxt" path="res://assets/scifi-player/players blue x2.png" id="1_7p1mj"]
-[ext_resource type="Script" uid="uid://bgdh06gu8xenh" path="res://scenes/enemy.gd" id="1_md0e3"]
-[ext_resource type="Script" uid="uid://xhhuyrx3gtgm" path="res://scenes/ai.gd" id="3_4ra3w"]
+[ext_resource type="Script" uid="uid://bgdh06gu8xenh" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://xhhuyrx3gtgm" path="res://scripts/ai.gd" id="3_4ra3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
