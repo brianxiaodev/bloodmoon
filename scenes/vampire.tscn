@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c5ikb3enwxmpq"]
+[gd_scene load_steps=41 format=3 uid="uid://c5ikb3enwxmpq"]
 
 [ext_resource type="Script" uid="uid://db05lyij832rv" path="res://scripts/vampire.gd" id="1_1ap6k"]
 [ext_resource type="Texture2D" uid="uid://llxuq0dqhiid" path="res://assets/vampire/vampr_color03_skin tone.png" id="1_j3v10"]
@@ -46,6 +46,54 @@ region = Rect2(896, 80, 56, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j237s"]
 atlas = ExtResource("1_j3v10")
 region = Rect2(952, 80, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yteio"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(504, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l5ef"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(560, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyud4"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(616, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bv2n"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(672, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsmxu"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(728, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa551"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(784, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug123"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(840, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qid66"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(896, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av061"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(952, 160, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3tsu"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(0, 240, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a8yy"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(56, 240, 56, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fbr6"]
+atlas = ExtResource("1_j3v10")
+region = Rect2(112, 240, 56, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tihfj"]
 atlas = ExtResource("1_j3v10")
@@ -126,6 +174,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yteio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l5ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyud4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bv2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsmxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa551")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug123")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qid66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av061")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3tsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a8yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fbr6")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tihfj")
 }],
 "loop": true,
@@ -187,7 +276,7 @@ Bats = ExtResource("3_kcw61")
 visibility_layer = 17
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_fiyks")
-animation = &"attack"
+animation = &"death"
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(20, 10)

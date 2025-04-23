@@ -34,6 +34,7 @@ var health: int = 100
 var bats_active = false
 var dash_active = false
 var shadow_active = false
+var is_dead = false
 
 
 
@@ -167,13 +168,27 @@ func shoot():
 		
 
 func handle_hit():
+	if is_dead:
+		return
 	health_stat.health -= 20
 	print("player hit", health_stat.health)
 	if health_stat.health <= 0:
 		die()
 		
 func die():
+	if is_dead:
+		return
+	is_dead = true
+	$AnimatedSprite2D.stop()
+	$AnimatedSprite2D.play("death")
 	print("Vampire down.")
+	set_process(false)  # Optional: stop player control
+	$CollisionShape2D.disabled = true  # Prevent more collisions
+	await $AnimatedSprite2D.animation_finished	# Wait for animation to complete
+	respawn()
+	
+func respawn():
+	get_tree().reload_current_scene()
 	
 func heal(amount: int) -> void:
 	if (health_stat.health < 100 and health_stat.health > 100-amount):
