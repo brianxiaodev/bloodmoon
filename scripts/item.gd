@@ -21,10 +21,12 @@ func _on_body_entered(body: Node2D) -> void:
 		if body.has_method("activate_bats"):
 			print("do we get here???")
 			body.activate_bats()
-	elif item_type == 1:
-		print("Shadow")
-	#elif item_type == 2:
 	elif item_type == 0:
+		print("Shadow")
+		if body.has_method("activate_shadow"):
+			body.activate_shadow()
+	#elif item_type == 2:
+	elif item_type == 1:
 		print("Dash")
 		#body.boost()
 		if body.has_method("activate_dash"):

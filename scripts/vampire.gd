@@ -21,12 +21,17 @@ var dash_direction = Vector2.ZERO
 @onready var dash_timer = $DashTimer
 @onready var dash_cooldown = $DashCooldown
 
+@export var stealth_duration: float = 3.0
+var is_stealth = false
+@onready var stealth_timer = $StealthTimer
+
 
 const START_SPEED : int = 100
 #const BOOST_SPEED : int = 200
 var health: int = 100
 var bats_active = false
 var dash_active = false
+var shadow_active = false
 
 
 
@@ -73,6 +78,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and not is_dashing and dash_cooldown.is_stopped():
 		start_dash()
 
+	if event.is_action_pressed("stealth") and not is_stealth:
+		start_stealth()
+
+
 	#if event.is_action_pressed("shoot"): #old semi auto shooting
 	#	shoot()
 
@@ -89,6 +98,28 @@ func _on_dash_timer_timeout() -> void:
 func _on_dash_cooldown_timeout() -> void:
 	# Optional: reset any visual effects
 	pass
+	
+func start_stealth():
+	if shadow_active:
+		is_stealth = true
+		stealth_timer.start()
+		var sprite = $AnimatedSprite2D
+		#sprite.modulate.a = 0.4  # Set transparency (alpha value)
+		sprite.play("shadow")    
+
+	# TODO disable collision or damage reception here
+	# $CollisionShape2D.disabled = true?
+	
+func _on_stealth_timer_timeout() -> void:
+	is_stealth = false
+
+	var sprite = $AnimatedSprite2D
+	#sprite.modulate.a = 1.0    # Fully visible again
+	sprite.play("idle")   
+
+	# TODO: re-enable collision
+	# $CollisionShape2D.disabled = false
+
 		
 func activate_bats():
 	print("do we get here x2???")
@@ -97,6 +128,9 @@ func activate_bats():
 	
 func activate_dash():
 	dash_active = true
+	
+func activate_shadow():
+	shadow_active = true
 
 func _on_bats_timer_timeout() -> void:
 	#bats_active = false
