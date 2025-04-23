@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Vampire
 
 signal player_fired_bullet(bullet, position, direction)
 
@@ -25,6 +26,7 @@ var dash_direction = Vector2.ZERO
 var is_stealth = false
 @onready var stealth_timer = $StealthTimer
 
+@onready var health_stat = $Health
 
 const START_SPEED : int = 100
 #const BOOST_SPEED : int = 200
@@ -46,7 +48,7 @@ func _ready():
 	bats_instance.global_position = attack_spawn_point.global_position
 
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var movement_direction := Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_up"):
@@ -138,14 +140,15 @@ func _on_bats_timer_timeout() -> void:
 	pass
 
 func shoot():
-	$AnimatedSprite2D.animation = "attack"
-	$AnimatedSprite2D.speed_scale = 2.5
-	$AnimatedSprite2D.play()
-	
 	if attack_cooldown.is_stopped():
 		# Main Bullet
+    # stuff from alien branch maybe? need to check what this does
+		# $AnimatedSprite2D.animation = "attack"
+		# $AnimatedSprite2D.speed_scale = 2.5
+		# $AnimatedSprite2D.play()
 		var bullet_instance = Bullet.instantiate()
 		bullet_instance.ignore_body = self
+		bullet_instance.animation_name = "bat"
 		var direction = (attack_direction.global_position - attack_spawn_point.global_position).normalized()
 		emit_signal("player_fired_bullet", bullet_instance, attack_spawn_point.global_position, direction)
 		attack_cooldown.start()
@@ -165,8 +168,8 @@ func shoot():
 		
 
 func handle_hit():
-	health -= 20
-	print("player hit", health)
+	health_stat.health -= 20
+	print("player hit", health_stat)
 
 #func boost():
 #	$BoostTimer.start()

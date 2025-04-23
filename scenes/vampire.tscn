@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c4u3h3tqj5sn8" path="res://scenes/bullet.tscn" id="2_h2yc6"]
 [ext_resource type="PackedScene" uid="uid://ciwhn70ef8waw" path="res://scenes/bats.tscn" id="3_kcw61"]
 [ext_resource type="Texture2D" uid="uid://cji7jmhkvo3cc" path="res://assets/vampire/vampr_shadow.png" id="5_kcw61"]
+[ext_resource type="PackedScene" uid="uid://q5jk6nid3ipf" path="res://scenes/health.tscn" id="3_qors7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ap6k"]
 atlas = ExtResource("1_j3v10")
@@ -175,6 +176,7 @@ size = Vector2(22, 40)
 [node name="Vampire" type="CharacterBody2D"]
 top_level = true
 light_mask = 2
+collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_1ap6k")
 Bullet = ExtResource("2_h2yc6")
@@ -217,6 +219,9 @@ one_shot = true
 [node name="StealthTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Health" parent="." instance=ExtResource("3_qors7")]
+
 
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="BatsCooldown" to="." method="_on_bats_timer_timeout"]

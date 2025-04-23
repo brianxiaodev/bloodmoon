@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://yc7ag4w7de2e"]
+
+[node name="EnemyBullet" type="Node2D"]
