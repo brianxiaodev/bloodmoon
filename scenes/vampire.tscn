@@ -276,7 +276,7 @@ Bats = ExtResource("3_kcw61")
 visibility_layer = 17
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_fiyks")
-animation = &"death"
+animation = &"attack"
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(20, 10)
