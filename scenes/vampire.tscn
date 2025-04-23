@@ -176,6 +176,7 @@ size = Vector2(22, 40)
 [node name="Vampire" type="CharacterBody2D"]
 top_level = true
 light_mask = 2
+collision_layer = 3
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_1ap6k")
@@ -183,6 +184,7 @@ Bullet = ExtResource("2_h2yc6")
 Bats = ExtResource("3_kcw61")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 17
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_fiyks")
 animation = &"attack"

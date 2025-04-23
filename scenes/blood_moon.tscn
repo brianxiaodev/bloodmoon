@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwnmps0tmudcj"]
+[gd_scene load_steps=13 format=3 uid="uid://bwnmps0tmudcj"]
 
 [ext_resource type="Script" uid="uid://bkexqhv32di1a" path="res://scripts/main.gd" id="1_3kn01"]
 [ext_resource type="PackedScene" uid="uid://p7oobg705p7j" path="res://scenes/map.tscn" id="2_3kn01"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://q5jk6nid3ipf" path="res://scenes/health.tscn" id="9_punxx"]
 [ext_resource type="PackedScene" uid="uid://dfyumq44xaxsu" path="res://scenes/ui.tscn" id="10_xv8qn"]
 [ext_resource type="Script" uid="uid://cddyqtwwyroqx" path="res://scripts/ui.gd" id="11_h4ocb"]
+[ext_resource type="PackedScene" uid="uid://cgrps2fgm3jxq" path="res://scenes/healthpotion.tscn" id="12_87vbj"]
 
 [node name="Blood Moon" type="Node2D"]
 script = ExtResource("1_3kn01")
@@ -42,3 +43,6 @@ collision_mask = 5
 
 [node name="UI" parent="." instance=ExtResource("10_xv8qn")]
 script = ExtResource("11_h4ocb")
+
+[node name="Healthpotion" parent="." instance=ExtResource("12_87vbj")]
+position = Vector2(-97, -131)

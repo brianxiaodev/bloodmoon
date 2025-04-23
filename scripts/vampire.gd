@@ -174,6 +174,14 @@ func handle_hit():
 		
 func die():
 	print("Vampire down.")
+	
+func heal(amount: int) -> void:
+	if (health_stat.health < 100 and health_stat.health > 100-amount):
+		health_stat.health = 100
+		print("Healed! Current health:", health_stat.health)
+	elif(health_stat.health < 100):
+		health_stat.health += amount
+		print("Healed! Current health:", health_stat.health)
 
 #func boost():
 #	$BoostTimer.start()
