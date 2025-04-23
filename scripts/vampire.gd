@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Vampire
 
 signal player_fired_bullet(bullet, position, direction)
 
@@ -11,12 +12,12 @@ signal player_fired_bullet(bullet, position, direction)
 @onready var attack_spawn_point = $AnimatedSprite2D/AttackSpawnPoint
 @onready var attack_direction = $AnimatedSprite2D/AttackDirection
 @onready var attack_cooldown = $AttackCooldown
-
+@onready var health_stat = $Health
 const START_SPEED : int = 100
 const BOOST_SPEED : int = 200
-var health: int = 100
 
-func _process(_delta: float) -> void:
+
+func _physics_process(_delta: float) -> void:
 	var movement_direction := Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_up"):
@@ -43,11 +44,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		shoot()
 
 func shoot():
-	$AnimatedSprite2D.animation = "attack"
-	$AnimatedSprite2D.speed_scale = 2.5
-	$AnimatedSprite2D.play()
-	
 	if attack_cooldown.is_stopped():
+		$AnimatedSprite2D.animation = "attack"
+		$AnimatedSprite2D.speed_scale = 2.5
+		$AnimatedSprite2D.play()
 		var bullet_instance = Bullet.instantiate()
 		bullet_instance.ignore_body = self
 		var direction = (attack_direction.global_position - attack_spawn_point.global_position).normalized()
@@ -55,8 +55,8 @@ func shoot():
 		attack_cooldown.start()
 
 func handle_hit():
-	health -= 20
-	print("player hit", health)
+	health_stat.health -= 20
+	print("player hit", health_stat)
 
 func boost():
 	$BoostTimer.start()

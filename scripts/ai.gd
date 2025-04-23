@@ -7,9 +7,9 @@ enum State {
 	ENGAGE
 }
 
-#@onready var player_detection_zone = $PlayerDetectionZone
+var current_state = State.PATROL
 
-#var state = State.PATROL
-
-#func set_state(new_state: int):
-#	pass
+func set_state(new_state: int):
+	if new_state != current_state:
+		current_state = new_state
+		emit_signal("state_changed", current_state)
