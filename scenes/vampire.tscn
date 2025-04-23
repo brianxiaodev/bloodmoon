@@ -178,7 +178,9 @@ one_shot = true
 wait_time = 6.0
 one_shot = true
 
-[node name="BatsTimer" type="Timer" parent="."]
+[node name="BatsCooldown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
 
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
-[connection signal="timeout" from="BatsTimer" to="." method="_on_bats_timer_timeout"]
+[connection signal="timeout" from="BatsCooldown" to="." method="_on_bats_timer_timeout"]

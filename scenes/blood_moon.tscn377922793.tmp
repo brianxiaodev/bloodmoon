@@ -24,6 +24,7 @@ zoom = Vector2(2, 2)
 script = ExtResource("4_q6r7r")
 
 [node name="Bullet" parent="." instance=ExtResource("6_3kn01")]
+visible = false
 
 [node name="Enemy" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(178, 8)
@@ -32,5 +33,3 @@ position = Vector2(178, 8)
 position = Vector2(-126, -42)
 
 [node name="Bats" parent="." instance=ExtResource("8_punxx")]
-collision_layer = 5
-collision_mask = 5
