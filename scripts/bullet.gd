@@ -2,6 +2,7 @@ extends Area2D
 class_name  Bullet
 
 @export var speed: float = 100
+@export var animation_name: String = "bat"
 @onready var kill_timer = $KillTimer
 
 var direction: Vector2 = Vector2.ZERO
@@ -10,7 +11,7 @@ var ignore_body: Node2D = null  # ← Who fired the bullet
 
 func _ready() -> void:
 	kill_timer.start()
-	$AnimatedSprite2D.play("bat")
+	$AnimatedSprite2D.play(animation_name)
 
 func _physics_process(delta: float) -> void:
 	if direction != Vector2.ZERO:
@@ -28,6 +29,12 @@ func _on_kill_timer_timeout() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body == ignore_body:
 		return
+	if body.is_in_group("Playerdetection"):
+		print("Hit PlayerDetectionZone — ignored")
+		return
 	if body.has_method("handle_hit"):
+		print("Calling handle_hit() on", body.name)
 		body.handle_hit()
 		queue_free()
+	else:
+		print("Hit", body.name, "but no handle_hit method")
