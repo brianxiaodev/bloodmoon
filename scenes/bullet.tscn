@@ -50,66 +50,67 @@ region = Rect2(304, 126, 16, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2bd8"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_in4mv")
+  "frames": [{
+    "duration": 1.0,
+    "texture": SubResource("AtlasTexture_in4mv")
+  }, {
+    "duration": 1.0,
+    "texture": SubResource("AtlasTexture_s437g")
+  }, {
+    "duration": 1.0,
+    "texture": SubResource("AtlasTexture_iqq7w")
+  }, {
+    "duration": 1.0,
+    "texture": SubResource("AtlasTexture_6umxm")
+  }],
+  "loop": true,
+  "name": &"bat",
+  "speed": 5.0
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s437g")
+  "frames": [{
+    "duration": 1.0,
+    "texture": ExtResource("2_k76ql")
+  }, {
+    "duration": 1.0,
+    "texture": ExtResource("3_in4mv")
+  }, {
+    "duration": 1.0,
+    "texture": ExtResource("4_s437g")
+  }, {
+    "duration": 1.0,
+    "texture": ExtResource("5_iqq7w")
+  }, {
+    "duration": 1.0,
+    "texture": ExtResource("6_6umxm")
+  }, {
+    "duration": 1.0,
+    "texture": ExtResource("7_0apvr")
+  }, {
+    "duration": 1.0,
+    "texture": ExtResource("8_ba0j3")
+  }, {
+    "duration": 1.0,
+    "texture": ExtResource("9_lurao")
+  }],
+  "loop": false,
+  "name": &"fireball"
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iqq7w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6umxm")
-}],
-"loop": true,
-"name": &"bat",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-
-"texture": ExtResource("2_k76ql")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_in4mv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_s437g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_iqq7w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_6umxm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_0apvr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ba0j3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_lurao")
-}],
-"loop": false,
-"name": &"fireball",
-
-"texture": SubResource("AtlasTexture_eoqba")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qncy5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tamys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_26lx3")
-}],
-"loop": true,
-"name": &"enemyAttack",
-"speed": 5.0
+  "frames": [{
+    "duration": 1.0,
+    "texture": SubResource("AtlasTexture_eoqba")
+  }, {
+    "duration": 1.0,
+    "texture": SubResource("AtlasTexture_qncy5")
+  }, {
+    "duration": 1.0,
+    "texture": SubResource("AtlasTexture_tamys")
+  }, {
+    "duration": 1.0,
+    "texture": SubResource("AtlasTexture_26lx3")
+  }],
+  "loop": true,
+  "name": &"enemyAttack",
+  "speed": 5.0
 }]
 
 [node name="Bullet" type="Area2D"]

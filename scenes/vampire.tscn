@@ -1,11 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://c5ikb3enwxmpq"]
+[gd_scene load_steps=29 format=3 uid="uid://c5ikb3enwxmpq"]
 
 [ext_resource type="Script" uid="uid://db05lyij832rv" path="res://scripts/vampire.gd" id="1_1ap6k"]
 [ext_resource type="Texture2D" uid="uid://llxuq0dqhiid" path="res://assets/vampire/vampr_color03_skin tone.png" id="1_j3v10"]
 [ext_resource type="PackedScene" uid="uid://c4u3h3tqj5sn8" path="res://scenes/bullet.tscn" id="2_h2yc6"]
 [ext_resource type="PackedScene" uid="uid://ciwhn70ef8waw" path="res://scenes/bats.tscn" id="3_kcw61"]
-[ext_resource type="Texture2D" uid="uid://cji7jmhkvo3cc" path="res://assets/vampire/vampr_shadow.png" id="5_kcw61"]
 [ext_resource type="PackedScene" uid="uid://q5jk6nid3ipf" path="res://scenes/health.tscn" id="3_qors7"]
+[ext_resource type="Texture2D" uid="uid://cji7jmhkvo3cc" path="res://assets/vampire/vampr_shadow.png" id="5_kcw61"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ap6k"]
 atlas = ExtResource("1_j3v10")
@@ -221,7 +221,6 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Health" parent="." instance=ExtResource("3_qors7")]
-
 
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="BatsCooldown" to="." method="_on_bats_timer_timeout"]
