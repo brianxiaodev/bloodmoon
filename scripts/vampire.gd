@@ -50,6 +50,7 @@ func shoot():
 		$AnimatedSprite2D.play()
 		var bullet_instance = Bullet.instantiate()
 		bullet_instance.ignore_body = self
+		bullet_instance.animation_name = "bat"
 		var direction = (attack_direction.global_position - attack_spawn_point.global_position).normalized()
 		emit_signal("player_fired_bullet", bullet_instance, attack_spawn_point.global_position, direction)
 		attack_cooldown.start()

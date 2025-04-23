@@ -438,10 +438,10 @@ shape = SubResource("RectangleShape2D_g0wcc")
 [node name="AI" type="Node2D" parent="."]
 script = ExtResource("3_4ra3w")
 
-[node name="PlayerDetectionZone" type="Area2D" parent="."]
+[node name="PlayerDetectionZone" type="Area2D" parent="AI" groups=["Playerdetection"]]
 collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone"]
 shape = SubResource("CircleShape2D_c1d84")
 
 [node name="ShootingTimer" type="Timer" parent="."]
@@ -449,5 +449,5 @@ wait_time = 0.5
 
 [node name="Health" parent="." instance=ExtResource("4_5uy6h")]
 
-[connection signal="body_entered" from="PlayerDetectionZone" to="." method="_on_player_detection_zone_body_entered"]
-[connection signal="body_exited" from="PlayerDetectionZone" to="." method="_on_player_detection_zone_body_exited"]
+[connection signal="body_entered" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_entered"]
+[connection signal="body_exited" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_exited"]
