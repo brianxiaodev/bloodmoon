@@ -4,8 +4,8 @@ var item_type : int 	# different types of power ups; 1 - bats, 2 - shadow, 3 - d
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# rn debugging so setting it only to emit bats
-	item_type = 0 #randi_range(0, 2)	# set to random powerup
+	# rn only have bats and dash bc shadow isn't setup yet
+	item_type = randi_range(0, 1)	# set to random powerup
 	$AnimatedSprite2D.play()
 	print("Item Ready!")
 
@@ -16,12 +16,12 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	#if item_type == 0:
-	if item_type == 2:
+	if item_type == 0:
 		print("Bats")
 		if body.has_method("activate_bats"):
 			print("do we get here???")
 			body.activate_bats()
-	elif item_type == 0:
+	elif item_type == 2:
 		print("Shadow")
 		if body.has_method("activate_shadow"):
 			body.activate_shadow()

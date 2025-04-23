@@ -11,10 +11,9 @@ var ignore_body: Node2D = null  # ← Who fired the bullet
 
 func _ready() -> void:
 	kill_timer.start()
-	$AnimatedSprite2D.play("fireball")
-	$AnimatedSprite2D.scale = Vector2(0.03, 0.03)
-  # prob better way of doing it?
-	#$AnimatedSprite2D.play(animation_name)
+	$AnimatedSprite2D.play(animation_name)
+	if animation_name == "fireball":
+		$AnimatedSprite2D.scale = Vector2(0.03, 0.03)
 
 func _physics_process(delta: float) -> void:
 	if direction != Vector2.ZERO:
