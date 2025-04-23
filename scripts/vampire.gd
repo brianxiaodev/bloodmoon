@@ -168,7 +168,12 @@ func shoot():
 
 func handle_hit():
 	health_stat.health -= 20
-	print("player hit", health_stat)
+	print("player hit", health_stat.health)
+	if health_stat.health <= 0:
+		die()
+		
+func die():
+	print("Vampire down.")
 
 #func boost():
 #	$BoostTimer.start()

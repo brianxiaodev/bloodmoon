@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwnmps0tmudcj"]
+[gd_scene load_steps=12 format=3 uid="uid://bwnmps0tmudcj"]
 
 [ext_resource type="Script" uid="uid://bkexqhv32di1a" path="res://scripts/main.gd" id="1_3kn01"]
 [ext_resource type="PackedScene" uid="uid://p7oobg705p7j" path="res://scenes/map.tscn" id="2_3kn01"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://c4u3h3tqj5sn8" path="res://scenes/bullet.tscn" id="6_3kn01"]
 [ext_resource type="PackedScene" uid="uid://4y67635ci7ss" path="res://scenes/enemy.tscn" id="7_1dman"]
 [ext_resource type="PackedScene" uid="uid://bom6v6ykibptf" path="res://scenes/item.tscn" id="8_1dman"]
-[ext_resource type="PackedScene" uid="uid://curevi1ol6iax" path="res://scenes/bats.tscn" id="8_punxx"]
+[ext_resource type="PackedScene" uid="uid://ciwhn70ef8waw" path="res://scenes/bats.tscn" id="8_punxx"]
 [ext_resource type="PackedScene" uid="uid://q5jk6nid3ipf" path="res://scenes/health.tscn" id="9_punxx"]
+[ext_resource type="PackedScene" uid="uid://dfyumq44xaxsu" path="res://scenes/ui.tscn" id="10_xv8qn"]
+[ext_resource type="Script" uid="uid://cddyqtwwyroqx" path="res://scripts/ui.gd" id="11_h4ocb"]
 
 [node name="Blood Moon" type="Node2D"]
 script = ExtResource("1_3kn01")
@@ -33,8 +35,10 @@ position = Vector2(174, -1)
 position = Vector2(-126, -42)
 
 [node name="Bats" parent="." instance=ExtResource("8_punxx")]
-
 collision_layer = 5
 collision_mask = 5
 
 [node name="Health" parent="." instance=ExtResource("9_punxx")]
+
+[node name="UI" parent="." instance=ExtResource("10_xv8qn")]
+script = ExtResource("11_h4ocb")

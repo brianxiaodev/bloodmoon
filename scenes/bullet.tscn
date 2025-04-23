@@ -123,7 +123,7 @@ shape = SubResource("RectangleShape2D_v8qja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t2bd8")
-animation = &"fireball"
+animation = &"bat"
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 3.0
