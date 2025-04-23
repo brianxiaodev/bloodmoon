@@ -32,6 +32,24 @@ script = ExtResource("4_q6r7r")
 [node name="Enemy" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(174, -1)
 
+[node name="Item7" parent="." instance=ExtResource("8_1dman")]
+position = Vector2(1197, -196)
+
+[node name="Item6" parent="." instance=ExtResource("8_1dman")]
+position = Vector2(249, 726)
+
+[node name="Item5" parent="." instance=ExtResource("8_1dman")]
+position = Vector2(-190, 624)
+
+[node name="Item4" parent="." instance=ExtResource("8_1dman")]
+position = Vector2(1351, 895)
+
+[node name="Item3" parent="." instance=ExtResource("8_1dman")]
+position = Vector2(792, 372)
+
+[node name="Item2" parent="." instance=ExtResource("8_1dman")]
+position = Vector2(-406, -269)
+
 [node name="Item" parent="." instance=ExtResource("8_1dman")]
 position = Vector2(-126, -42)
 
@@ -44,5 +62,43 @@ collision_mask = 5
 [node name="UI" parent="." instance=ExtResource("10_xv8qn")]
 script = ExtResource("11_h4ocb")
 
+[node name="Healthpotion5" parent="." instance=ExtResource("12_87vbj")]
+position = Vector2(676, 983)
+
+[node name="Healthpotion4" parent="." instance=ExtResource("12_87vbj")]
+position = Vector2(1349, 289)
+
+[node name="Healthpotion3" parent="." instance=ExtResource("12_87vbj")]
+position = Vector2(1450, 598)
+
+[node name="Healthpotion2" parent="." instance=ExtResource("12_87vbj")]
+position = Vector2(366, -287)
+
 [node name="Healthpotion" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(-97, -131)
+
+[node name="Enemy5" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(1206, -13)
+scale = Vector2(5.0625, 5.0625)
+
+[node name="Enemy4" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(631, -192)
+scale = Vector2(3.375, 3.375)
+
+[node name="Enemy3" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(69, 470)
+scale = Vector2(2.25, 2.25)
+
+[node name="Enemy2" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(174, -1)
+
+[node name="Enemy7" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(500, 640)
+scale = Vector2(2.25, 2.25)
+
+[node name="Enemy8" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(907, 941)
+scale = Vector2(2.25, 2.25)
+
+[node name="Enemy6" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(1273, 544)
