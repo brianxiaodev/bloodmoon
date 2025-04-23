@@ -1,7 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://c5ikb3enwxmpq"]
+[gd_scene load_steps=28 format=3 uid="uid://c5ikb3enwxmpq"]
 
 [ext_resource type="Script" uid="uid://db05lyij832rv" path="res://scripts/vampire.gd" id="1_1ap6k"]
 [ext_resource type="Texture2D" uid="uid://llxuq0dqhiid" path="res://assets/vampire/vampr_color03_skin tone.png" id="1_j3v10"]
+[ext_resource type="PackedScene" uid="uid://c4u3h3tqj5sn8" path="res://scenes/bullet.tscn" id="2_h2yc6"]
+[ext_resource type="PackedScene" uid="uid://ciwhn70ef8waw" path="res://scenes/bats.tscn" id="3_kcw61"]
+[ext_resource type="Texture2D" uid="uid://cji7jmhkvo3cc" path="res://assets/vampire/vampr_shadow.png" id="5_kcw61"]
 [ext_resource type="PackedScene" uid="uid://q5jk6nid3ipf" path="res://scenes/health.tscn" id="3_qors7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ap6k"]
@@ -72,6 +75,18 @@ region = Rect2(224, 0, 56, 80)
 atlas = ExtResource("1_j3v10")
 region = Rect2(280, 0, 56, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiyks"]
+atlas = ExtResource("5_kcw61")
+region = Rect2(56, 0, 56, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6jbn"]
+atlas = ExtResource("5_kcw61")
+region = Rect2(0, 0, 56, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w2km"]
+atlas = ExtResource("5_kcw61")
+region = Rect2(112, 0, 56, 85)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fiyks"]
 animations = [{
 "frames": [{
@@ -139,6 +154,20 @@ animations = [{
 "loop": false,
 "name": &"move",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiyks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6jbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w2km")
+}],
+"loop": true,
+"name": &"shadow",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v10"]
@@ -150,13 +179,13 @@ light_mask = 2
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_1ap6k")
+Bullet = ExtResource("2_h2yc6")
+Bats = ExtResource("3_kcw61")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_fiyks")
-animation = &"attack"
-frame = 9
-frame_progress = 1.0
+animation = &"shadow"
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(20, 10)
@@ -176,6 +205,26 @@ one_shot = true
 wait_time = 6.0
 one_shot = true
 
+[node name="BatsCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="StealthTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="Health" parent="." instance=ExtResource("3_qors7")]
 
+
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="BatsCooldown" to="." method="_on_bats_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="StealthTimer" to="." method="_on_stealth_timer_timeout"]
