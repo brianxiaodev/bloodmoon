@@ -142,10 +142,9 @@ func _on_bats_timer_timeout() -> void:
 func shoot():
 	if attack_cooldown.is_stopped():
 		# Main Bullet
-	# stuff from alien branch maybe? need to check what this does
-		# $AnimatedSprite2D.animation = "attack"
-		# $AnimatedSprite2D.speed_scale = 2.5
-		# $AnimatedSprite2D.play()
+		$AnimatedSprite2D.animation = "attack"
+		$AnimatedSprite2D.speed_scale = 2.5
+		$AnimatedSprite2D.play()
 		var bullet_instance = Bullet.instantiate()
 		bullet_instance.ignore_body = self
 		bullet_instance.animation_name = "bat"

@@ -1,17 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4u3h3tqj5sn8"]
+[gd_scene load_steps=22 format=3 uid="uid://c4u3h3tqj5sn8"]
 
 [ext_resource type="Texture2D" uid="uid://cr8ngya30llii" path="res://assets/vampire/projectile bat_36px.png" id="1_v7oki"]
 [ext_resource type="Script" uid="uid://b1ebl0xeo6xwj" path="res://scripts/bullet.gd" id="1_v8qja"]
 [ext_resource type="Texture2D" uid="uid://d4eb2exxrljsc" path="res://assets/fireball/FB500-1.png" id="2_k76ql"]
 [ext_resource type="Texture2D" uid="uid://bcyvgqfvtu1qb" path="res://assets/fireball/FB500-2.png" id="3_in4mv"]
+[ext_resource type="Texture2D" uid="uid://bktajgiu8lhxp" path="res://assets/alien/attack/All_Fire_Bullet_Pixel_16x16.png" id="3_s437g"]
 [ext_resource type="Texture2D" uid="uid://dd60dp5psabxo" path="res://assets/fireball/FB500-3.png" id="4_s437g"]
 [ext_resource type="Texture2D" uid="uid://ceu0hr20w3kk6" path="res://assets/fireball/FB500-4.png" id="5_iqq7w"]
 [ext_resource type="Texture2D" uid="uid://chuwmovtpo7l0" path="res://assets/fireball/FB500-5.png" id="6_6umxm"]
 [ext_resource type="Texture2D" uid="uid://crktvbgpkfj34" path="res://assets/fireball/B500-2.PNG" id="7_0apvr"]
 [ext_resource type="Texture2D" uid="uid://t13figpro33w" path="res://assets/fireball/B500-3.PNG" id="8_ba0j3"]
 [ext_resource type="Texture2D" uid="uid://c58bv4hhw7xkt" path="res://assets/fireball/B500-4.PNG" id="9_lurao"]
-[ext_resource type="Texture2D" uid="uid://bktajgiu8lhxp" path="res://assets/alien/attack/All_Fire_Bullet_Pixel_16x16.png" id="3_l5glv"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
 size = Vector2(26, 21)
@@ -32,92 +31,91 @@ region = Rect2(72, 0, 36, 36)
 atlas = ExtResource("1_v7oki")
 region = Rect2(0, 36, 36, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
-atlas = ExtResource("3_l5glv")
-region = Rect2(256, 126, 16, 18)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0apvr"]
+atlas = ExtResource("3_s437g")
+region = Rect2(256, 128, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
-atlas = ExtResource("3_l5glv")
-region = Rect2(272, 126, 16, 18)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba0j3"]
+atlas = ExtResource("3_s437g")
+region = Rect2(272, 128, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
-atlas = ExtResource("3_l5glv")
-region = Rect2(288, 126, 16, 18)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lurao"]
+atlas = ExtResource("3_s437g")
+region = Rect2(288, 128, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_26lx3"]
-atlas = ExtResource("3_l5glv")
-region = Rect2(304, 126, 16, 18)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bssuu"]
+atlas = ExtResource("3_s437g")
+region = Rect2(304, 128, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2bd8"]
 animations = [{
-  "frames": [{
-    "duration": 1.0,
-    "texture": SubResource("AtlasTexture_in4mv")
-  }, {
-    "duration": 1.0,
-    "texture": SubResource("AtlasTexture_s437g")
-  }, {
-    "duration": 1.0,
-    "texture": SubResource("AtlasTexture_iqq7w")
-  }, {
-    "duration": 1.0,
-    "texture": SubResource("AtlasTexture_6umxm")
-  }],
-  "loop": true,
-  "name": &"bat",
-  "speed": 5.0
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in4mv")
 }, {
-  "frames": [{
-    "duration": 1.0,
-    "texture": ExtResource("2_k76ql")
-  }, {
-    "duration": 1.0,
-    "texture": ExtResource("3_in4mv")
-  }, {
-    "duration": 1.0,
-    "texture": ExtResource("4_s437g")
-  }, {
-    "duration": 1.0,
-    "texture": ExtResource("5_iqq7w")
-  }, {
-    "duration": 1.0,
-    "texture": ExtResource("6_6umxm")
-  }, {
-    "duration": 1.0,
-    "texture": ExtResource("7_0apvr")
-  }, {
-    "duration": 1.0,
-    "texture": ExtResource("8_ba0j3")
-  }, {
-    "duration": 1.0,
-    "texture": ExtResource("9_lurao")
-  }],
-  "loop": false,
-  "name": &"fireball"
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s437g")
 }, {
-  "frames": [{
-    "duration": 1.0,
-    "texture": SubResource("AtlasTexture_eoqba")
-  }, {
-    "duration": 1.0,
-    "texture": SubResource("AtlasTexture_qncy5")
-  }, {
-    "duration": 1.0,
-    "texture": SubResource("AtlasTexture_tamys")
-  }, {
-    "duration": 1.0,
-    "texture": SubResource("AtlasTexture_26lx3")
-  }],
-  "loop": true,
-  "name": &"enemyAttack",
-  "speed": 5.0
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqq7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6umxm")
+}],
+"loop": true,
+"name": &"bat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0apvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba0j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lurao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bssuu")
+}],
+"loop": true,
+"name": &"enemyAttack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k76ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_in4mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s437g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iqq7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6umxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0apvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ba0j3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lurao")
+}],
+"loop": false,
+"name": &"fireball",
+"speed": 5.0
 }]
 
 [node name="Bullet" type="Area2D"]
-
 collision_layer = 5
 collision_mask = 5
-
 script = ExtResource("1_v8qja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -125,11 +123,7 @@ shape = SubResource("RectangleShape2D_v8qja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t2bd8")
-
-animation = &"fireball"
-# will have to check on this
-# animation = &"enemyAttack"
-frame_progress = 0.557792
+animation = &"enemyAttack"
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 3.0
