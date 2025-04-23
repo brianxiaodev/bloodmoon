@@ -13,10 +13,22 @@ signal player_fired_bullet(bullet, position, direction)
 
 @onready var bats_cooldown = $BatsCooldown
 
+@export var dash_speed: float = 400
+@export var dash_duration: float = 0.2
+@export var dash_cooldown_time: float = 1.0
+var is_dashing = false
+var dash_direction = Vector2.ZERO
+@onready var dash_timer = $DashTimer
+@onready var dash_cooldown = $DashCooldown
+
+
 const START_SPEED : int = 100
-const BOOST_SPEED : int = 200
+#const BOOST_SPEED : int = 200
 var health: int = 100
 var bats_active = false
+var dash_active = false
+
+
 
 func _ready():
 	var direction = Vector2.RIGHT
@@ -48,16 +60,43 @@ func _process(_delta: float) -> void:
 		$AnimatedSprite2D.scale.x = 1
 	
 	movement_direction = movement_direction.normalized()
-	velocity = movement_direction * speed
+	if is_dashing:
+		velocity = dash_direction * dash_speed
+	else:
+		velocity = movement_direction * speed
 	move_and_slide()
 	
 	if Input.is_action_pressed("shoot"):  # Check if the shoot button is held down
 		shoot()
 		
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("dash") and not is_dashing and dash_cooldown.is_stopped():
+		start_dash()
+
+	#if event.is_action_pressed("shoot"): #old semi auto shooting
+	#	shoot()
+
+func start_dash():
+	if dash_active:
+		is_dashing = true
+		dash_direction = velocity.normalized()
+		dash_timer.start()
+		dash_cooldown.start()
+
+func _on_dash_timer_timeout() -> void:
+	is_dashing = false
+
+func _on_dash_cooldown_timeout() -> void:
+	# Optional: reset any visual effects
+	pass
+		
 func activate_bats():
 	print("do we get here x2???")
 	bats_active = true
 	print(bats_active )
+	
+func activate_dash():
+	dash_active = true
 
 func _on_bats_timer_timeout() -> void:
 	#bats_active = false
@@ -95,9 +134,9 @@ func handle_hit():
 	health -= 20
 	print("player hit", health)
 
-func boost():
-	$BoostTimer.start()
-	speed = BOOST_SPEED
+#func boost():
+#	$BoostTimer.start()
+#	speed = BOOST_SPEED
 
 func _on_boost_timer_timeout() -> void:
 	speed = START_SPEED

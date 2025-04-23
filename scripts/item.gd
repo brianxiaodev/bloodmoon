@@ -15,16 +15,20 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if item_type == 0:
+	#if item_type == 0:
+	if item_type == 2:
 		print("Bats")
 		if body.has_method("activate_bats"):
 			print("do we get here???")
 			body.activate_bats()
 	elif item_type == 1:
 		print("Shadow")
-	elif item_type == 2:
+	#elif item_type == 2:
+	elif item_type == 0:
 		print("Dash")
-		body.boost()
+		#body.boost()
+		if body.has_method("activate_dash"):
+			body.activate_dash()
 	# delete item
 	queue_free()
 	
