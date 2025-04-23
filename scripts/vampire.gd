@@ -50,9 +50,8 @@ func _process(_delta: float) -> void:
 	movement_direction = movement_direction.normalized()
 	velocity = movement_direction * speed
 	move_and_slide()
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("shoot"):
+	
+	if Input.is_action_pressed("shoot"):  # Check if the shoot button is held down
 		shoot()
 		
 func activate_bats():
@@ -81,14 +80,13 @@ func shoot():
 	if bats_cooldown.is_stopped() and bats_active:
 		var bats_instance = Bats.instantiate()
 		var direction = (attack_direction.global_position - attack_spawn_point.global_position).normalized()
-		var angle_variation = deg_to_rad(randf_range(-15, 15))  # up to ±15 degrees
+		var angle_variation = deg_to_rad(randf_range(-20, 20))  # up to ±15 degrees
 		var varied_direction = direction.rotated(angle_variation)
-		bats_instance.set_direction(varied_direction)
 
 		bats_instance.ignore_body = self
 		bats_instance.get_node("AnimatedSprite2D").play("bat")
 		bats_instance.get_node("AnimatedSprite2D").scale = Vector2(1, 1) 
-		emit_signal("player_fired_bullet", bats_instance, attack_spawn_point.global_position, direction)
+		emit_signal("player_fired_bullet", bats_instance, attack_spawn_point.global_position, varied_direction)
 		
 		bats_cooldown.start()
 		
