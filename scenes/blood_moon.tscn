@@ -20,6 +20,7 @@ script = ExtResource("1_3kn01")
 
 [node name="Vampire" parent="." instance=ExtResource("2_oujrd")]
 position = Vector2(-3, 19)
+collision_mask = 9
 
 [node name="Camera2D" type="Camera2D" parent="Vampire"]
 zoom = Vector2(2, 2)
@@ -28,9 +29,6 @@ zoom = Vector2(2, 2)
 script = ExtResource("4_q6r7r")
 
 [node name="Bullet" parent="." instance=ExtResource("6_3kn01")]
-
-[node name="Enemy" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(174, -1)
 
 [node name="Item7" parent="." instance=ExtResource("8_1dman")]
 position = Vector2(1197, -196)
@@ -77,6 +75,9 @@ position = Vector2(366, -287)
 [node name="Healthpotion" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(-97, -131)
 
+[node name="Enemy" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(174, -1)
+
 [node name="Enemy5" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(1206, -13)
 scale = Vector2(5.0625, 5.0625)
@@ -88,9 +89,6 @@ scale = Vector2(3.375, 3.375)
 [node name="Enemy3" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(69, 470)
 scale = Vector2(2.25, 2.25)
-
-[node name="Enemy2" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(174, -1)
 
 [node name="Enemy7" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(500, 640)
