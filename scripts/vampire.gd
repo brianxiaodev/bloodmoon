@@ -6,7 +6,7 @@ signal player_fired_bullet(bullet, position, direction)
 @export var Bullet: PackedScene
 @export var Bats: PackedScene
 
-@export var speed = 100
+@export var speed = 150
 
 @onready var attack_spawn_point = $AnimatedSprite2D/AttackSpawnPoint
 @onready var attack_direction = $AnimatedSprite2D/AttackDirection
@@ -28,8 +28,7 @@ var is_stealth = false
 
 @onready var health_stat = $Health
 
-const START_SPEED : int = 100
-#const BOOST_SPEED : int = 200
+const START_SPEED : int = 150
 var health: int = 100
 var bats_active = false
 var dash_active = false
@@ -197,10 +196,6 @@ func heal(amount: int) -> void:
 	elif(health_stat.health < 100):
 		health_stat.health += amount
 		print("Healed! Current health:", health_stat.health)
-
-#func boost():
-#	$BoostTimer.start()
-#	speed = BOOST_SPEED
 
 func _on_boost_timer_timeout() -> void:
 	speed = START_SPEED
