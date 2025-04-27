@@ -209,9 +209,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2fbr6")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -276,7 +276,7 @@ Bats = ExtResource("3_kcw61")
 visibility_layer = 17
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_fiyks")
-animation = &"attack"
+animation = &"idle"
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(20, 10)

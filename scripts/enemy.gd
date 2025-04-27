@@ -11,12 +11,14 @@ class_name Enemy
 @onready var shooting_timer = $ShootingTimer
 
 var is_dead : bool = false
+var original_scale = Vector2.ONE
 
 func _ready() -> void:
 	#$PlayerDetectionZone.connect("body_entered", Callable(self, "_on_player_entered_zone"))
 	#ai.connect("state_changed", Callable(self, "_on_state_changed"))
 	#shooting_timer.timeout.connect(_on_shooting_timer_timeout)
 	$AnimatedSprite2D.play("idle") 
+	original_scale = $AnimatedSprite2D.scale
 	ai.state_changed.connect(_on_state_changed)
 	shooting_timer.wait_time = fire_rate
 	shooting_timer.timeout.connect(_on_shooting_timer_timeout)
@@ -85,3 +87,12 @@ func die():
 
 func _on_death_animation_finished():
 	queue_free()
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if $AnimatedSprite2D.animation == "dead":
+		var current_frame = $AnimatedSprite2D.frame
+		if current_frame >= 14 and current_frame <= 16:
+			$AnimatedSprite2D.scale = original_scale * 6 
+		else:
+			$AnimatedSprite2D.scale = original_scale

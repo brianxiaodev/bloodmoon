@@ -49,6 +49,11 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
+	if is_dead:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	var movement_direction := Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_up"):
@@ -184,10 +189,14 @@ func die():
 	set_process(false)  # Optional: stop player control
 	$CollisionShape2D.disabled = true  # Prevent more collisions
 	await $AnimatedSprite2D.animation_finished	# Wait for animation to complete
-	respawn()
-	
-func respawn():
-	get_tree().reload_current_scene()
+	#respawn()
+	show_game_over()
+
+func show_game_over():
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+
+#func respawn():
+	#get_tree().reload_current_scene()
 	
 func heal(amount: int) -> void:
 	if (health_stat.health < 100 and health_stat.health > 100-amount):
