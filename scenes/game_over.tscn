@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtgtookoxhgn8"]
+
+[ext_resource type="Script" uid="uid://bsyggcybu6wh1" path="res://scenes/game_over.gd" id="1_xeevv"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_xeevv")
+
+[node name="GAME OVER" type="RichTextLabel" parent="."]
+offset_right = 210.0
+offset_bottom = 46.0
+bbcode_enabled = true
+text = "[center][b]GAME OVER[b][center]
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GAME OVER"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 228.0
+offset_bottom = 49.0
+text = "Press Space to Restart"
