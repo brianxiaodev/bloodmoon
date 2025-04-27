@@ -105,3 +105,4 @@ scale = Vector2(2.25, 2.25)
 position = Vector2(143, 246)
 
 [node name="GameOver" parent="." instance=ExtResource("13_8hplf")]
+visible = false
