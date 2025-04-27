@@ -49,6 +49,11 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
+	if is_dead:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	var movement_direction := Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_up"):
