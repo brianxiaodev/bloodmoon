@@ -423,7 +423,9 @@ Bullet = ExtResource("2_xf85k")
 position = Vector2(0, -10)
 scale = Vector2(0.035, 0.035)
 sprite_frames = SubResource("SpriteFrames_j0cyh")
-animation = &"idle"
+animation = &"dead"
+frame = 16
+frame_progress = 1.0
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(514.286, 114.286)
@@ -449,5 +451,6 @@ wait_time = 0.5
 
 [node name="Health" parent="." instance=ExtResource("4_5uy6h")]
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_entered"]
 [connection signal="body_exited" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_exited"]
