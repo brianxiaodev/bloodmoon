@@ -226,4 +226,3 @@ visible = false
 
 [node name="Door" parent="." instance=ExtResource("12_1sb0y")]
 position = Vector2(1240, -415)
-target_scene = null
