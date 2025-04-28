@@ -27,7 +27,7 @@ func set_direction(dir : Vector2) -> void:
 
 func _on_kill_timer_timeout() -> void:
 	queue_free()
-
+	
 func _on_body_entered(body: Node2D) -> void:
 	if body == ignore_body:
 		return
@@ -35,6 +35,9 @@ func _on_body_entered(body: Node2D) -> void:
 		print("Hit PlayerDetectionZone — ignored")
 		return
 	if body.has_method("handle_hit"):
+		if body is Vampire and body.is_stealth:
+			print("Bullet ignored stealth Vampire")
+			return
 		print("Calling handle_hit() on", body.name)
 		body.handle_hit()
 		queue_free()

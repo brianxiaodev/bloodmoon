@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Vampire
 
 signal player_fired_bullet(bullet, position, direction)
+signal stealth_changed(value: float)
 
 @export var Bullet: PackedScene
 @export var Bats: PackedScene
@@ -22,9 +23,15 @@ var dash_direction = Vector2.ZERO
 @onready var dash_timer = $DashTimer
 @onready var dash_cooldown = $DashCooldown
 
-@export var stealth_duration: float = 3.0
 var is_stealth = false
-@onready var stealth_timer = $StealthTimer
+var is_stealth_button_held = false
+var can_stealth = true
+@onready var stealth_cooldown = $StealthCooldown
+@export var max_stealth_meter: float = 100.0  # Maximum stealth meter
+var current_stealth_meter: float = 100.0      # Current stealth meter value
+@export var stealth_drain_rate: float = 15.0    # Rate at which the meter drains per second while in stealth
+@export var stealth_regen_rate: float = 5.0     # Rate at which the meter regenerates per second when not in stealth
+
 
 @onready var health_stat = $Health
 @onready var hurt_flash_timer = $HurtFlashTimer
@@ -49,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
-		
+	
 	attack_spawn_point.position = get_aim_direction() * 10
 
 	var movement_direction := Vector2.ZERO
@@ -83,12 +90,39 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot"):  # Check if the shoot button is held down
 		shoot()
 		
+	if not is_stealth:
+		if current_stealth_meter < max_stealth_meter:
+			current_stealth_meter += stealth_regen_rate * _delta
+			current_stealth_meter = min(current_stealth_meter, max_stealth_meter)
+			emit_signal("stealth_changed", current_stealth_meter)
+
+	else:
+		current_stealth_meter -= stealth_drain_rate * _delta
+		emit_signal("stealth_changed", current_stealth_meter)
+		if current_stealth_meter <= 0:
+			current_stealth_meter = 0
+			stop_stealth()
+
+	if current_stealth_meter < 10 and can_stealth:
+		can_stealth = false
+		stealth_cooldown.start()
+		print("cant stealth for a bit")
+	#print(current_stealth_meter)
+	
+	if is_stealth_button_held and can_stealth and not is_stealth and current_stealth_meter > 10:
+		start_stealth()
+	elif not is_stealth_button_held and is_stealth:
+		stop_stealth()
+	
+
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and not is_dashing and dash_cooldown.is_stopped():
 		start_dash()
-
-	if event.is_action_pressed("stealth") and not is_stealth:
-		start_stealth()
+	if event.is_action_pressed("stealth") and stealth_cooldown.is_stopped():
+		is_stealth_button_held = true  # Stealth button is being held
+	elif event.is_action_released("stealth"):
+		is_stealth_button_held = false  # Stealth button was released
 
 func get_aim_direction() -> Vector2:
 	var aim_direction = Vector2.ZERO
@@ -126,29 +160,33 @@ func _on_dash_cooldown_timeout() -> void:
 	pass
 	
 func start_stealth():
-	if shadow_active:
+	if current_stealth_meter > 0 and not is_stealth:
+		print("start repeated")
 		is_stealth = true
-		stealth_timer.start()
-		var sprite = $AnimatedSprite2D
-		#sprite.modulate.a = 0.4  # Set transparency (alpha value)
-		sprite.play("shadow")    
 
-	# TODO disable collision or damage reception here
-	# $CollisionShape2D.disabled = true?
-	
-func _on_stealth_timer_timeout() -> void:
+		var sprite = $AnimatedSprite2D
+		sprite.modulate.a = 0.2  # Set transparency (alpha value)
+		$CollisionShape2D.disabled = true  # Disable collision during stealth
+		print("Stealth activated")
+		
+func stop_stealth():
+	if not is_stealth:
+		return
 	is_stealth = false
 
 	var sprite = $AnimatedSprite2D
-	#sprite.modulate.a = 1.0    # Fully visible again
-	sprite.play("idle")   
+	sprite.modulate.a = 1.0  # Fully visible again
+	$CollisionShape2D.disabled = false  # Re-enable collision
+	print("Stealth deactivated")
+	# Optional: you can start cooldown or additional effects after stealth ends
 
-	# TODO: re-enable collision
-	# $CollisionShape2D.disabled = false
+func _on_stealth_cooldown_timeout() -> void:
+	print("can enter shadow")
+	can_stealth = true
+	pass # Replace with function body.
 
 		
 func activate_bats():
-	print("do we get here x2???")
 	bats_active = true
 	print(bats_active )
 	
@@ -163,6 +201,8 @@ func _on_bats_timer_timeout() -> void:
 	#right now this doesnt do anything
 	pass
 func shoot():
+	if is_stealth:
+		return
 	if attack_cooldown.is_stopped():
 		is_attacking = true
 		$AnimatedSprite2D.animation = "attack"
