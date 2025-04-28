@@ -15,22 +15,27 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	var main = get_tree().root.get_node("Blood Moon")
 	#if item_type == 0:
 	if item_type == 0:
 		print("Bats")
 		if body.has_method("activate_bats"):
 			print("do we get here???")
 			body.activate_bats()
+		  # Adjust the path if different
+		main.update_powerup_display("Bats")
 	elif item_type == 1:
 		print("Shadow")
 		if body.has_method("activate_shadow"):
 			body.activate_shadow()
+		main.update_powerup_display("Shadow")
 	#elif item_type == 2:
 	elif item_type == 2:
 		print("Dash")
 		#body.boost()
 		if body.has_method("activate_dash"):
 			body.activate_dash()
+		main.update_powerup_display("Dash")
 	# delete item
 	queue_free()
 	

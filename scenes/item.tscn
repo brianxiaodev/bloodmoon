@@ -43,6 +43,7 @@ radius = 14.0357
 
 [node name="Item" type="Area2D"]
 light_mask = 17
+position = Vector2(-530, 212)
 script = ExtResource("1_s8enn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -44,6 +44,31 @@ script = ExtResource("11_h4ocb")
 [node name="Enemy" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(-177, -116)
 
+[node name="Item" parent="." instance=ExtResource("8_1dman")]
+position = Vector2(-636, -95)
+
+[node name="Healthpotion" parent="." instance=ExtResource("12_87vbj")]
+position = Vector2(-530, -218)
+
+[node name="GameOver" parent="." instance=ExtResource("13_8hplf")]
+visible = false
+
+[node name="Door" parent="." instance=ExtResource("13_8hplf")]
+position = Vector2(-4, 0)
+
+[node name="PowerUpUI" type="CanvasLayer" parent="."]
+
+[node name="PowerUpLabel" type="Label" parent="PowerUpUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -28.0
+offset_right = 139.0
+offset_bottom = -5.0
+grow_vertical = 0
+text = "PowerUps: None"
+
 [node name="Enemy2" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(207, -241)
 scale = Vector2(2, 2)
@@ -87,9 +112,6 @@ position = Vector2(537, 414)
 [node name="Item2" parent="." instance=ExtResource("8_1dman")]
 position = Vector2(-524, -285)
 
-[node name="Item" parent="." instance=ExtResource("8_1dman")]
-position = Vector2(-126, -42)
-
 [node name="Healthpotion5" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(236, 63)
 
@@ -101,12 +123,3 @@ position = Vector2(429, 178)
 
 [node name="Healthpotion2" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(366, -287)
-
-[node name="Healthpotion" parent="." instance=ExtResource("12_87vbj")]
-position = Vector2(-530, -218)
-
-[node name="GameOver" parent="." instance=ExtResource("13_8hplf")]
-visible = false
-
-[node name="Door" parent="." instance=ExtResource("13_8hplf")]
-position = Vector2(-4, 0)
