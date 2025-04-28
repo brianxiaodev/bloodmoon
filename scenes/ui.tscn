@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfyumq44xaxsu"]
+[gd_scene load_steps=7 format=3 uid="uid://dfyumq44xaxsu"]
 
-[ext_resource type="Script" uid="uid://dlhnjk1aba7dv" path="res://scenes/healthbar.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://cmuy4kg0nn4uf" path="res://scenes/ui.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://dlhnjk1aba7dv" path="res://scenes/healthbar.gd" id="2_x4jx1"]
 
 [sub_resource type="Gradient" id="Gradient_nt7q6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.372549, 0.317647, 0.305882, 1)
@@ -21,6 +22,7 @@ height = 32
 fill_to = Vector2(1, 1)
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_nt7q6")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 anchors_preset = -1
@@ -32,4 +34,12 @@ offset_right = -21132.3
 offset_bottom = -13959.6
 texture_under = SubResource("GradientTexture2D_x4jx1")
 texture_progress = SubResource("GradientTexture2D_gdt2y")
-script = ExtResource("1_nt7q6")
+script = ExtResource("2_x4jx1")
+
+[node name="PowerupLabel" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 479.0
+offset_right = 377.0
+offset_bottom = 620.0
+text = "Powerups:
+"
