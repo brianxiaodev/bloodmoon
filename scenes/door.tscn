@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ald5ngtdkny"]
+
+[ext_resource type="Texture2D" uid="uid://b4glq5btec2r3" path="res://assets/spaceship/door.png" id="1_hpvv5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvv5"]
+size = Vector2(36, 61)
+
+[node name="Door" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.274621, 0.264048)
+texture = ExtResource("1_hpvv5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_hpvv5")
