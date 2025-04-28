@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dfyumq44xaxsu" path="res://scenes/ui.tscn" id="10_xv8qn"]
 [ext_resource type="Script" uid="uid://cddyqtwwyroqx" path="res://scripts/ui.gd" id="11_h4ocb"]
 [ext_resource type="PackedScene" uid="uid://cgrps2fgm3jxq" path="res://scenes/healthpotion.tscn" id="12_87vbj"]
-[ext_resource type="PackedScene" uid="uid://dtgtookoxhgn8" path="res://scenes/game_over.tscn" id="13_8hplf"]
 [ext_resource type="PackedScene" uid="uid://b3ald5ngtdkny" path="res://scenes/door.tscn" id="13_8hplf"]
 
 [node name="Blood Moon" type="Node2D"]
@@ -105,8 +104,8 @@ scale = Vector2(2.25, 2.25)
 [node name="Enemy6" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(143, 246)
 
-
 [node name="GameOver" parent="." instance=ExtResource("13_8hplf")]
 visible = false
 
 [node name="Door" parent="." instance=ExtResource("13_8hplf")]
+position = Vector2(1240, -415)
