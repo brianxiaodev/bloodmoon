@@ -15,8 +15,6 @@ class_name Enemy
 var is_hurt = false
 
 @onready var ui = get_tree().root.get_node("Blood Moon/UI")
-@onready var healthbar_timer = $HealthBarTimer
-
 
 var is_dead : bool = false
 var original_scale = Vector2.ONE
@@ -65,7 +63,6 @@ func handle_hit():
 	$AnimatedSprite2D.modulate = Color(1,0,0) #flash red
 	hurt_flash_timer.start()
 	print("Current health:", health_stat.health)
-	show_healthbar()
 	if health_stat.health <= 0:
 		die()
 		#$AnimatedSprite2D.animation = "dead"
@@ -73,12 +70,6 @@ func handle_hit():
 		#$AnimatedSprite2D.play()
 		##$AnimatedSprite2D.animation_finished.connect(queue_free)
 		#$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_death_animation_finished"))
-
-func show_healthbar():
-	if ui:
-		ui.get_node("EnemyHealthBar").visible = true
-		ui.get_node("EnemyHealthBar").value = health_stat.health
-		healthbar_timer.start()  # Reset the timer
 
 
 func die():
@@ -98,9 +89,7 @@ func die():
 	# Stop all animation conflicts
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.play("dead")
-	
-	if ui:
-		ui.get_node("EnemyHealthBar").visible = false
+	 
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
@@ -120,15 +109,6 @@ func _on_hurt_flash_timer_timeout() -> void:
 
 func _on_player_entered_zone():
 	player_in_zone = true
-	show_healthbar()
 
 func _on_player_exited_zone():
 	player_in_zone = false
-	if healthbar_timer.is_stopped():
-		ui.get_node("EnemyHealthBar").visible = false
-
-
-func _on_health_bar_timer_timeout() -> void:
-	if not player_in_zone:
-		if ui:
-			ui.get_node("EnemyHealthBar").visible = false

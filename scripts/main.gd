@@ -15,6 +15,7 @@ func _ready() -> void:
 	var health_bar = health_ui.get_node("HealthBar")
 	player.connect("player_fired_bullet", Callable(bullet_manager, "handle_bullet_spawned"))
 	var success = health_node.health_changed.connect(health_bar.update_health)
+	health_bar.update_health(100)
 
 func update_powerup_display(new_powerup: String = "") -> void:
 	if new_powerup != "":

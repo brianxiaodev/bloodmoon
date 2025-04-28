@@ -1,10 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfyumq44xaxsu"]
+[gd_scene load_steps=6 format=3 uid="uid://dfyumq44xaxsu"]
 
 [ext_resource type="Script" uid="uid://dlhnjk1aba7dv" path="res://scenes/healthbar.gd" id="1_nt7q6"]
+
+[sub_resource type="Gradient" id="Gradient_nt7q6"]
+colors = PackedColorArray(0, 0, 0, 1, 0.372549, 0.317647, 0.305882, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x4jx1"]
+gradient = SubResource("Gradient_nt7q6")
+width = 256
+height = 32
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_yev5y"]
+colors = PackedColorArray(0.419608, 0, 0, 1, 0.92549, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gdt2y"]
+gradient = SubResource("Gradient_yev5y")
+width = 256
+height = 32
+fill_to = Vector2(1, 1)
 
 [node name="UI" type="CanvasLayer"]
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_right = 18.581
+anchor_bottom = 21.629
+offset_left = 17.0
+offset_top = 16.0
+offset_right = -21132.3
+offset_bottom = -13959.6
+texture_under = SubResource("GradientTexture2D_x4jx1")
+texture_progress = SubResource("GradientTexture2D_gdt2y")
 script = ExtResource("1_nt7q6")
