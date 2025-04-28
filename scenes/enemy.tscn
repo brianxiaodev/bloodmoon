@@ -453,12 +453,21 @@ wait_time = 0.5
 
 [node name="Health" parent="." instance=ExtResource("4_5uy6h")]
 
+
+[node name="HurtFlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+
 [node name="HealthBarTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
+
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_entered"]
 [connection signal="body_exited" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_exited"]
+
+[connection signal="timeout" from="HurtFlashTimer" to="." method="_on_hurt_flash_timer_timeout"]
+
 [connection signal="timeout" from="AI/PatrolTimer" to="AI" method="_on_patrol_timer_timeout"]
 [connection signal="timeout" from="HealthBarTimer" to="." method="_on_health_bar_timer_timeout"]
+

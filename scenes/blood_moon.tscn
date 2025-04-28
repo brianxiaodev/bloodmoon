@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ciwhn70ef8waw" path="res://scenes/bats.tscn" id="8_punxx"]
 [ext_resource type="PackedScene" uid="uid://q5jk6nid3ipf" path="res://scenes/health.tscn" id="9_punxx"]
 [ext_resource type="PackedScene" uid="uid://dfyumq44xaxsu" path="res://scenes/ui.tscn" id="10_xv8qn"]
-[ext_resource type="Script" uid="uid://cddyqtwwyroqx" path="res://scripts/ui.gd" id="11_h4ocb"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="11_h4ocb"]
 [ext_resource type="PackedScene" uid="uid://cgrps2fgm3jxq" path="res://scenes/healthpotion.tscn" id="12_87vbj"]
 [ext_resource type="PackedScene" uid="uid://b3ald5ngtdkny" path="res://scenes/door.tscn" id="13_8hplf"]
 [ext_resource type="PackedScene" uid="uid://ddda0gc2vxlm5" path="res://scenes/level_2.tscn" id="14_2wlms"]
@@ -37,60 +37,9 @@ collision_mask = 5
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("4_q6r7r")
 
-[node name="Health" parent="." instance=ExtResource("9_punxx")]
-
-[node name="UI" parent="." instance=ExtResource("10_xv8qn")]
-script = ExtResource("11_h4ocb")
-
-[node name="Enemy" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(-177, -116)
-
-[node name="Item" parent="." instance=ExtResource("8_1dman")]
-position = Vector2(-636, -95)
-
-[node name="Healthpotion" parent="." instance=ExtResource("12_87vbj")]
-position = Vector2(-530, -218)
-
-[node name="GameOver" parent="." instance=ExtResource("13_8hplf")]
-visible = false
-
-[node name="PowerUpUI" type="CanvasLayer" parent="."]
-
-[node name="PowerUpLabel" type="Label" parent="PowerUpUI"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -28.0
-offset_right = 139.0
-offset_bottom = -5.0
-grow_vertical = 0
-text = "PowerUps: None"
-
-[node name="Enemy2" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(207, -241)
-scale = Vector2(2, 2)
-
-[node name="Enemy3" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(441, 69)
-
-[node name="Enemy4" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(1142, 12)
-
 [node name="Enemy5" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(-31, 275)
 scale = Vector2(2.5, 2.5)
-
-[node name="Enemy6" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(813, -213)
-scale = Vector2(2.5, 2.5)
-
-[node name="Enemy7" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(942, 314)
-scale = Vector2(2, 2)
-
-[node name="Enemy8" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(-562, 201)
 
 [node name="Item7" parent="." instance=ExtResource("8_1dman")]
 position = Vector2(1197, -196)

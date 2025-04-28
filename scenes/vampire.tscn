@@ -138,22 +138,22 @@ region = Rect2(112, 0, 56, 85)
 [sub_resource type="SpriteFrames" id="SpriteFrames_fiyks"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_1ap6k")
 }, {
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_qors7")
 }, {
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_h2yc6")
 }, {
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_kcw61")
 }, {
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_anhdl")
 }, {
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_tqr1q")
 }, {
 "duration": 1.0,
@@ -276,7 +276,7 @@ Bats = ExtResource("3_kcw61")
 visibility_layer = 17
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_fiyks")
-animation = &"idle"
+animation = &"attack"
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(20, 10)
@@ -313,8 +313,13 @@ one_shot = true
 
 [node name="Health" parent="." instance=ExtResource("3_qors7")]
 
+[node name="HurtFlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="BatsCooldown" to="." method="_on_bats_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="StealthTimer" to="." method="_on_stealth_timer_timeout"]
+[connection signal="timeout" from="HurtFlashTimer" to="." method="_on_hurt_flash_timer_timeout"]

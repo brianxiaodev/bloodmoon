@@ -10,8 +10,13 @@ class_name Enemy
 @onready var ai = $AI
 @onready var shooting_timer = $ShootingTimer
 
+
+@onready var hurt_flash_timer = $HurtFlashTimer
+var is_hurt = false
+
 @onready var ui = get_tree().root.get_node("Blood Moon/UI")
 @onready var healthbar_timer = $HealthBarTimer
+
 
 var is_dead : bool = false
 var original_scale = Vector2.ONE
@@ -56,6 +61,9 @@ func handle_hit():
 	if is_dead:
 		return
 	health_stat.health -= 20
+	is_hurt = true
+	$AnimatedSprite2D.modulate = Color(1,0,0) #flash red
+	hurt_flash_timer.start()
 	print("Current health:", health_stat.health)
 	show_healthbar()
 	if health_stat.health <= 0:
@@ -102,8 +110,13 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 			$AnimatedSprite2D.scale = original_scale * 6 
 		else:
 			$AnimatedSprite2D.scale = original_scale
-		if current_frame == $AnimatedSprite2D.sprite_frames.get_frame_count("dead") - 1:
+    if current_frame == $AnimatedSprite2D.sprite_frames.get_frame_count("dead") - 1:
 			queue_free()
+
+
+func _on_hurt_flash_timer_timeout() -> void:
+	is_hurt = false
+	$AnimatedSprite2D.modulate = Color(1,1,1)
 
 func _on_player_entered_zone():
 	player_in_zone = true
@@ -119,3 +132,4 @@ func _on_health_bar_timer_timeout() -> void:
 	if not player_in_zone:
 		if ui:
 			ui.get_node("EnemyHealthBar").visible = false
+

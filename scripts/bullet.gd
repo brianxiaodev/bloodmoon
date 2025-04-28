@@ -1,7 +1,7 @@
 extends Area2D
 class_name  Bullet
 
-@export var speed: float = 100
+@export var speed: float = 250
 @export var animation_name: String = "bat"
 @onready var kill_timer = $KillTimer
 
