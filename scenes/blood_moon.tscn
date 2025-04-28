@@ -29,7 +29,7 @@ zoom = Vector2(2, 2)
 script = ExtResource("4_q6r7r")
 
 [node name="Bullet" parent="." instance=ExtResource("6_3kn01")]
-position = Vector2(-416, -205)
+position = Vector2(-348, -887)
 
 [node name="Item7" parent="." instance=ExtResource("8_1dman")]
 position = Vector2(1197, -196)

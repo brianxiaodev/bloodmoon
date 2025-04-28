@@ -36,44 +36,44 @@ var bats_active = false
 var dash_active = false
 var shadow_active = false
 var is_dead = false
+var last_movement_direction = Vector2.RIGHT
+var is_attacking = false
 
 
 
 func _ready():
-	var direction = Vector2.RIGHT
-	var bats_instance = Bats.instantiate()
-	bats_instance.ignore_body = self
-	bats_instance.set_direction(direction)
-	bats_instance.get_node("AnimatedSprite2D").play("bat")
-	bats_instance.get_node("AnimatedSprite2D").scale = Vector2(0.1, 0.1)
-	add_child(bats_instance)
-	bats_instance.global_position = attack_spawn_point.global_position
-
+	pass
 
 func _physics_process(_delta: float) -> void:
 	if is_dead:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
-	
+		
+	attack_spawn_point.position = get_aim_direction() * 10
+
 	var movement_direction := Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_up"):
-		$AnimatedSprite2D.play("move")
 		movement_direction.y = -1
 	if Input.is_action_pressed("ui_down"):
-		$AnimatedSprite2D.play("move")
 		movement_direction.y = 1
 	if Input.is_action_pressed("ui_left"):
-		$AnimatedSprite2D.play("move")
 		movement_direction.x = -1
 		$AnimatedSprite2D.scale.x = -1
 	if Input.is_action_pressed("ui_right"):
-		$AnimatedSprite2D.play("move")
 		movement_direction.x = 1
 		$AnimatedSprite2D.scale.x = 1
 	
 	movement_direction = movement_direction.normalized()
+	if movement_direction != Vector2.ZERO:
+		last_movement_direction = movement_direction
+	
+	if movement_direction != Vector2.ZERO and not is_attacking:
+		$AnimatedSprite2D.play("move")
+	elif not is_attacking:
+		$AnimatedSprite2D.play("idle")	
+	
 	if is_dashing:
 		velocity = dash_direction * dash_speed
 	else:
@@ -89,6 +89,23 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("stealth") and not is_stealth:
 		start_stealth()
+
+func get_aim_direction() -> Vector2:
+	var aim_direction = Vector2.ZERO
+	
+	if Input.is_action_pressed("ui_up"):
+		aim_direction.y = -1
+	if Input.is_action_pressed("ui_down"):
+		aim_direction.y = 1
+	if Input.is_action_pressed("ui_left"):
+		aim_direction.x = -1
+	if Input.is_action_pressed("ui_right"):
+		aim_direction.x = 1
+	
+	if aim_direction != Vector2.ZERO:
+		return aim_direction.normalized()
+	else:
+		return last_movement_direction  # Use last direction if no input
 
 
 	#if event.is_action_pressed("shoot"): #old semi auto shooting
@@ -145,24 +162,31 @@ func _on_bats_timer_timeout() -> void:
 	#bats_active = false
 	#right now this doesnt do anything
 	pass
-
 func shoot():
 	if attack_cooldown.is_stopped():
-		# Main Bullet
+		is_attacking = true
 		$AnimatedSprite2D.animation = "attack"
 		$AnimatedSprite2D.speed_scale = 2.5
 		$AnimatedSprite2D.play()
+		
 		var bullet_instance = Bullet.instantiate()
 		bullet_instance.ignore_body = self
 		bullet_instance.animation_name = "fireball"
-		var direction = (attack_direction.global_position - attack_spawn_point.global_position).normalized()
-		emit_signal("player_fired_bullet", bullet_instance, attack_spawn_point.global_position, direction)
+		
+		var direction = get_aim_direction()
+		if direction == Vector2.ZERO:
+			direction = Vector2($AnimatedSprite2D.scale.x, 0)  # Default to facing
+		
+		emit_signal("player_fired_bullet", bullet_instance, attack_spawn_point.global_position + Vector2(0, 10), direction)
 		attack_cooldown.start()
 		
 	if bats_cooldown.is_stopped() and bats_active:
 		var bats_instance = Bats.instantiate()
-		var direction = (attack_direction.global_position - attack_spawn_point.global_position).normalized()
-		var angle_variation = deg_to_rad(randf_range(-20, 20))  # up to ±15 degrees
+		var direction = get_aim_direction()
+		if direction == Vector2.ZERO:
+			direction = Vector2($AnimatedSprite2D.scale.x, 0)
+			
+		var angle_variation = deg_to_rad(randf_range(-20, 20))
 		var varied_direction = direction.rotated(angle_variation)
 
 		bats_instance.ignore_body = self
@@ -171,6 +195,7 @@ func shoot():
 		emit_signal("player_fired_bullet", bats_instance, attack_spawn_point.global_position, varied_direction)
 		
 		bats_cooldown.start()
+
 		
 
 func handle_hit():
@@ -218,3 +243,8 @@ func _on_boost_timer_timeout() -> void:
 func _on_hurt_flash_timer_timeout() -> void:
 	is_hurt = false
 	$AnimatedSprite2D.modulate = Color(1,1,1)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "attack":
+		is_attacking = false
