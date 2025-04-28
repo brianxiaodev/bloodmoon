@@ -110,46 +110,46 @@ region = Rect2(320, 320, 64, 64)
 [sub_resource type="SpriteFrames" id="SpriteFrames_j0cyh"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("2_c1d84")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("3_xf85k")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("4_4q3rj")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("5_4psgw")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("6_o3pyo")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("7_cq75n")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("8_o2mnd")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("9_o4y0d")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("10_2s0fd")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("11_x685p")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("12_wow6h")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("13_rm0mj")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("14_kifpr")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("15_mo1yv")
 }, {
 "duration": 1.0,
@@ -163,7 +163,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -423,7 +423,9 @@ Bullet = ExtResource("2_xf85k")
 position = Vector2(0, -10)
 scale = Vector2(0.035, 0.035)
 sprite_frames = SubResource("SpriteFrames_j0cyh")
-animation = &"idle"
+animation = &"dead"
+frame = 16
+frame_progress = 1.0
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(514.286, 114.286)
@@ -449,5 +451,6 @@ wait_time = 0.5
 
 [node name="Health" parent="." instance=ExtResource("4_5uy6h")]
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_entered"]
 [connection signal="body_exited" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_exited"]
