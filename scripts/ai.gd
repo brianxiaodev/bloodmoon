@@ -28,6 +28,8 @@ func _ready() -> void:
 	zone.body_exited.connect(_on_player_detection_zone_body_exited)
 
 func _physics_process(delta: float) -> void:
+	if enemy.is_dead:
+		return
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:

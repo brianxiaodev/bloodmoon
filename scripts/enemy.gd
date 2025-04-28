@@ -66,27 +66,18 @@ func die():
 		return
 	is_dead = true
 	print("Enemy dying...")
-
+	
 	# Stop shooting
 	shooting_timer.stop()
 
-	# Optional: Disconnect AI signal to avoid state flips
+	#disconnect ai process
 	ai.state_changed.disconnect(_on_state_changed)
+	ai.set_process(false)
+	ai.set_physics_process(false)
 
 	# Stop all animation conflicts
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.play("dead")
-	#$AnimatedSprite2D.frame = 0
-
-	
-	$AnimatedSprite2D.animation_finished.connect(
-			_on_death_animation_finished,
-			Object.CONNECT_ONE_SHOT
-		)
-
-
-func _on_death_animation_finished():
-	queue_free()
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
@@ -96,3 +87,5 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 			$AnimatedSprite2D.scale = original_scale * 6 
 		else:
 			$AnimatedSprite2D.scale = original_scale
+		if current_frame == $AnimatedSprite2D.sprite_frames.get_frame_count("dead") - 1:
+			queue_free()
