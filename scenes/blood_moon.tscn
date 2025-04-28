@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwnmps0tmudcj"]
+[gd_scene load_steps=14 format=3 uid="uid://bwnmps0tmudcj"]
 
 [ext_resource type="Script" uid="uid://bkexqhv32di1a" path="res://scripts/main.gd" id="1_3kn01"]
 [ext_resource type="PackedScene" uid="uid://p7oobg705p7j" path="res://scenes/map.tscn" id="2_3kn01"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://cddyqtwwyroqx" path="res://scripts/ui.gd" id="11_h4ocb"]
 [ext_resource type="PackedScene" uid="uid://cgrps2fgm3jxq" path="res://scenes/healthpotion.tscn" id="12_87vbj"]
 [ext_resource type="PackedScene" uid="uid://b3ald5ngtdkny" path="res://scenes/door.tscn" id="13_8hplf"]
-[ext_resource type="PackedScene" uid="uid://ddda0gc2vxlm5" path="res://scenes/level_2.tscn" id="14_2wlms"]
 
 [node name="Blood Moon" type="Node2D"]
 script = ExtResource("1_3kn01")
@@ -125,9 +124,6 @@ position = Vector2(366, -287)
 [node name="Healthpotion6" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(-530, -218)
 
-[node name="Enemy9" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(-177, -116)
-
 [node name="Enemy10" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(1027, 91)
 scale = Vector2(5.0625, 5.0625)
@@ -156,4 +152,3 @@ visible = false
 
 [node name="Door2" parent="." instance=ExtResource("13_8hplf")]
 position = Vector2(1240, -415)
-target_scene = ExtResource("14_2wlms")
