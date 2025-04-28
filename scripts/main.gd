@@ -4,16 +4,17 @@ extends Node2D
 @onready var player = $Vampire
 @onready var powerup_label = $PowerUpUI/PowerUpLabel
 
+@onready var health_ui_scene = preload("res://scenes/ui.tscn")  # Preload the UI scene
 var collected_powerups: Array[String] = [] 
 
 func _ready() -> void:
 	randomize()
 	var health_node = $Vampire/Health
-	var health_ui = $UI
-	
+	var health_ui = health_ui_scene.instantiate()
+	get_node("/root").add_child(health_ui)
+	var health_bar = health_ui.get_node("HealthBar")
 	player.connect("player_fired_bullet", Callable(bullet_manager, "handle_bullet_spawned"))
-
-	var success = health_node.health_changed.connect(health_ui.update_health)
+	var success = health_node.health_changed.connect(health_bar.update_health)
 
 func update_powerup_display(new_powerup: String = "") -> void:
 	if new_powerup != "":

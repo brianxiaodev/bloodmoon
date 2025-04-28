@@ -10,6 +10,15 @@ func _ready() -> void:
 		var video_size = texture.get_size()
 		_fit_video_to_screen(video_size)
 
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		skip_intro()
+
+func skip_intro():
+	stop()  # Stop the video
+	get_tree().change_scene_to_file("res://scenes/blood_moon.tscn")
+
+
 func _fit_video_to_screen(video_size: Vector2) -> void:
 	var video_aspect = video_size.x / video_size.y
 	var viewport_aspect = viewport_size.x / viewport_size.y

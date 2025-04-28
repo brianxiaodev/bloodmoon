@@ -110,7 +110,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 			$AnimatedSprite2D.scale = original_scale * 6 
 		else:
 			$AnimatedSprite2D.scale = original_scale
-    if current_frame == $AnimatedSprite2D.sprite_frames.get_frame_count("dead") - 1:
+		if current_frame == $AnimatedSprite2D.sprite_frames.get_frame_count("dead") - 1:
 			queue_free()
 
 
@@ -132,4 +132,3 @@ func _on_health_bar_timer_timeout() -> void:
 	if not player_in_zone:
 		if ui:
 			ui.get_node("EnemyHealthBar").visible = false
-
