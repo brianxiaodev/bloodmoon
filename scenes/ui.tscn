@@ -1,32 +1,39 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfyumq44xaxsu"]
 
-[sub_resource type="Gradient" id="Gradient_xlq6p"]
-colors = PackedColorArray(0.0941176, 0.0588235, 0.00392157, 1, 0.262745, 0.0980392, 0.0745098, 1)
-metadata/_snap_enabled = true
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt7q6"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nt7q6"]
-gradient = SubResource("Gradient_xlq6p")
-width = 384
-height = 48
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlq6p"]
+bg_color = Color(0.0901961, 0.858824, 0.172549, 1)
 
-[sub_resource type="Gradient" id="Gradient_nt7q6"]
-colors = PackedColorArray(0.952941, 0, 0, 1, 0.772549, 0.14902, 0.0980392, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x4jx1"]
-gradient = SubResource("Gradient_nt7q6")
-width = 384
-height = 48
-metadata/_snap_enabled = true
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yev5y"]
+bg_color = Color(0.0705882, 0.945098, 0.0901961, 1)
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-anchors_preset = -1
-anchor_right = 0.729
-anchor_bottom = 0.665
-offset_left = 37.0
-offset_top = 26.0
-offset_right = -418.808
-offset_bottom = -340.92
-texture_under = SubResource("GradientTexture2D_nt7q6")
-texture_progress = SubResource("GradientTexture2D_x4jx1")
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 22.0
+offset_top = 24.0
+offset_right = 202.0
+offset_bottom = 51.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nt7q6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xlq6p")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -202.0
+offset_top = 22.0
+offset_right = -22.0
+offset_bottom = 49.0
+grow_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_x4jx1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yev5y")
+value = 100.0
+show_percentage = false

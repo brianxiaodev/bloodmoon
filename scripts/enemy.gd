@@ -10,11 +10,17 @@ class_name Enemy
 @onready var ai = $AI
 @onready var shooting_timer = $ShootingTimer
 
+
 @onready var hurt_flash_timer = $HurtFlashTimer
 var is_hurt = false
 
+@onready var ui = get_tree().root.get_node("Blood Moon/UI")
+@onready var healthbar_timer = $HealthBarTimer
+
+
 var is_dead : bool = false
 var original_scale = Vector2.ONE
+var player_in_zone = false
 
 func _ready() -> void:
 	#$PlayerDetectionZone.connect("body_entered", Callable(self, "_on_player_entered_zone"))
@@ -59,6 +65,7 @@ func handle_hit():
 	$AnimatedSprite2D.modulate = Color(1,0,0) #flash red
 	hurt_flash_timer.start()
 	print("Current health:", health_stat.health)
+	show_healthbar()
 	if health_stat.health <= 0:
 		die()
 		#$AnimatedSprite2D.animation = "dead"
@@ -67,32 +74,33 @@ func handle_hit():
 		##$AnimatedSprite2D.animation_finished.connect(queue_free)
 		#$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_death_animation_finished"))
 
+func show_healthbar():
+	if ui:
+		ui.get_node("EnemyHealthBar").visible = true
+		ui.get_node("EnemyHealthBar").value = health_stat.health
+		healthbar_timer.start()  # Reset the timer
+
+
 func die():
 	if is_dead:
 		return
 	is_dead = true
 	print("Enemy dying...")
-
+	
 	# Stop shooting
 	shooting_timer.stop()
 
-	# Optional: Disconnect AI signal to avoid state flips
+	#disconnect ai process
 	ai.state_changed.disconnect(_on_state_changed)
+	ai.set_process(false)
+	ai.set_physics_process(false)
 
 	# Stop all animation conflicts
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.play("dead")
-	#$AnimatedSprite2D.frame = 0
-
 	
-	$AnimatedSprite2D.animation_finished.connect(
-			_on_death_animation_finished,
-			Object.CONNECT_ONE_SHOT
-		)
-
-
-func _on_death_animation_finished():
-	queue_free()
+	if ui:
+		ui.get_node("EnemyHealthBar").visible = false
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
@@ -102,8 +110,26 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 			$AnimatedSprite2D.scale = original_scale * 6 
 		else:
 			$AnimatedSprite2D.scale = original_scale
+    if current_frame == $AnimatedSprite2D.sprite_frames.get_frame_count("dead") - 1:
+			queue_free()
 
 
 func _on_hurt_flash_timer_timeout() -> void:
 	is_hurt = false
 	$AnimatedSprite2D.modulate = Color(1,1,1)
+
+func _on_player_entered_zone():
+	player_in_zone = true
+	show_healthbar()
+
+func _on_player_exited_zone():
+	player_in_zone = false
+	if healthbar_timer.is_stopped():
+		ui.get_node("EnemyHealthBar").visible = false
+
+
+func _on_health_bar_timer_timeout() -> void:
+	if not player_in_zone:
+		if ui:
+			ui.get_node("EnemyHealthBar").visible = false
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwnmps0tmudcj"]
+[gd_scene load_steps=15 format=3 uid="uid://bwnmps0tmudcj"]
 
 [ext_resource type="Script" uid="uid://bkexqhv32di1a" path="res://scripts/main.gd" id="1_3kn01"]
 [ext_resource type="PackedScene" uid="uid://p7oobg705p7j" path="res://scenes/map.tscn" id="2_3kn01"]
@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dfyumq44xaxsu" path="res://scenes/ui.tscn" id="10_xv8qn"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="11_h4ocb"]
 [ext_resource type="PackedScene" uid="uid://cgrps2fgm3jxq" path="res://scenes/healthpotion.tscn" id="12_87vbj"]
-[ext_resource type="PackedScene" uid="uid://dtgtookoxhgn8" path="res://scenes/game_over.tscn" id="13_8hplf"]
+[ext_resource type="PackedScene" uid="uid://b3ald5ngtdkny" path="res://scenes/door.tscn" id="13_8hplf"]
+[ext_resource type="PackedScene" uid="uid://ddda0gc2vxlm5" path="res://scenes/level_2.tscn" id="14_2wlms"]
 
 [node name="Blood Moon" type="Node2D"]
 script = ExtResource("1_3kn01")
@@ -25,11 +26,20 @@ position = Vector2(-417, -188)
 [node name="Camera2D" type="Camera2D" parent="Vampire"]
 zoom = Vector2(2, 2)
 
+[node name="Bullet" parent="." instance=ExtResource("6_3kn01")]
+
+[node name="Bats" parent="." instance=ExtResource("8_punxx")]
+visible = false
+position = Vector2(-519, -191)
+collision_layer = 5
+collision_mask = 5
+
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("4_q6r7r")
 
-[node name="Bullet" parent="." instance=ExtResource("6_3kn01")]
-position = Vector2(-348, -887)
+[node name="Enemy5" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(-31, 275)
+scale = Vector2(2.5, 2.5)
 
 [node name="Item7" parent="." instance=ExtResource("8_1dman")]
 position = Vector2(1197, -196)
@@ -49,20 +59,6 @@ position = Vector2(537, 414)
 [node name="Item2" parent="." instance=ExtResource("8_1dman")]
 position = Vector2(-524, -285)
 
-[node name="Item" parent="." instance=ExtResource("8_1dman")]
-position = Vector2(-126, -42)
-
-[node name="Bats" parent="." instance=ExtResource("8_punxx")]
-visible = false
-position = Vector2(-519, -191)
-collision_layer = 5
-collision_mask = 5
-
-[node name="Health" parent="." instance=ExtResource("9_punxx")]
-
-[node name="UI" parent="." instance=ExtResource("10_xv8qn")]
-script = ExtResource("11_h4ocb")
-
 [node name="Healthpotion5" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(236, 63)
 
@@ -75,34 +71,35 @@ position = Vector2(429, 178)
 [node name="Healthpotion2" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(366, -287)
 
-[node name="Healthpotion" parent="." instance=ExtResource("12_87vbj")]
+[node name="Healthpotion6" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(-530, -218)
 
-[node name="Enemy" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(-177, -116)
-
-[node name="Enemy5" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy10" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(1027, 91)
 scale = Vector2(5.0625, 5.0625)
 
-[node name="Enemy4" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy11" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(264, -173)
 scale = Vector2(3.375, 3.375)
 
-[node name="Enemy3" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy12" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(-270, 279)
 scale = Vector2(2.25, 2.25)
 
-[node name="Enemy7" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy13" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(444, 329)
 scale = Vector2(2.25, 2.25)
 
-[node name="Enemy8" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy14" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(503, -9)
 scale = Vector2(2.25, 2.25)
 
-[node name="Enemy6" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy15" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(143, 246)
 
-[node name="GameOver" parent="." instance=ExtResource("13_8hplf")]
+[node name="GameOver2" parent="." instance=ExtResource("13_8hplf")]
 visible = false
+
+[node name="Door2" parent="." instance=ExtResource("13_8hplf")]
+position = Vector2(1240, -415)
+target_scene = ExtResource("14_2wlms")
