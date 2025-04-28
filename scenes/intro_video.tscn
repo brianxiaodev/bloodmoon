@@ -13,9 +13,11 @@ font_size = 64
 offset_right = 1920.0
 offset_bottom = 1200.0
 stream = ExtResource("1_mgkwl")
+autoplay = true
 script = ExtResource("1_8ofvi")
 
 [node name="Label" type="Label" parent="."]
+z_index = 5
 offset_left = 345.0
 offset_top = 1085.0
 offset_right = 1849.0
