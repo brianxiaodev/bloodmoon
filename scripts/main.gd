@@ -4,6 +4,7 @@ extends Node2D
 @onready var player = $Vampire
 
 func _ready() -> void:
+	randomize()
 	var health_node = $Vampire/Health
 	var health_ui = $UI
 	

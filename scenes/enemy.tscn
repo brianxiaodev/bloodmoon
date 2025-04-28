@@ -446,6 +446,10 @@ collision_layer = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone"]
 shape = SubResource("CircleShape2D_c1d84")
 
+[node name="PatrolTimer" type="Timer" parent="AI"]
+wait_time = 3.0
+one_shot = true
+
 [node name="ShootingTimer" type="Timer" parent="."]
 wait_time = 0.5
 
@@ -454,3 +458,4 @@ wait_time = 0.5
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_entered"]
 [connection signal="body_exited" from="AI/PlayerDetectionZone" to="." method="_on_player_detection_zone_body_exited"]
+[connection signal="timeout" from="AI/PatrolTimer" to="AI" method="_on_patrol_timer_timeout"]
