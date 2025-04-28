@@ -10,6 +10,9 @@ class_name Enemy
 @onready var ai = $AI
 @onready var shooting_timer = $ShootingTimer
 
+@onready var hurt_flash_timer = $HurtFlashTimer
+var is_hurt = false
+
 var is_dead : bool = false
 var original_scale = Vector2.ONE
 
@@ -52,6 +55,9 @@ func handle_hit():
 	if is_dead:
 		return
 	health_stat.health -= 20
+	is_hurt = true
+	$AnimatedSprite2D.modulate = Color(1,0,0) #flash red
+	hurt_flash_timer.start()
 	print("Current health:", health_stat.health)
 	if health_stat.health <= 0:
 		die()
@@ -96,3 +102,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 			$AnimatedSprite2D.scale = original_scale * 6 
 		else:
 			$AnimatedSprite2D.scale = original_scale
+
+
+func _on_hurt_flash_timer_timeout() -> void:
+	is_hurt = false
+	$AnimatedSprite2D.modulate = Color(1,1,1)

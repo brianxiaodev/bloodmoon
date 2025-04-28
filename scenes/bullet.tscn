@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c4u3h3tqj5sn8"]
+[gd_scene load_steps=19 format=3 uid="uid://c4u3h3tqj5sn8"]
 
 [ext_resource type="Texture2D" uid="uid://cr8ngya30llii" path="res://assets/vampire/projectile bat_36px.png" id="1_v7oki"]
 [ext_resource type="Script" uid="uid://b1ebl0xeo6xwj" path="res://scripts/bullet.gd" id="1_v8qja"]
@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dd60dp5psabxo" path="res://assets/fireball/FB500-3.png" id="4_s437g"]
 [ext_resource type="Texture2D" uid="uid://ceu0hr20w3kk6" path="res://assets/fireball/FB500-4.png" id="5_iqq7w"]
 [ext_resource type="Texture2D" uid="uid://chuwmovtpo7l0" path="res://assets/fireball/FB500-5.png" id="6_6umxm"]
-[ext_resource type="Texture2D" uid="uid://crktvbgpkfj34" path="res://assets/fireball/B500-2.PNG" id="7_0apvr"]
-[ext_resource type="Texture2D" uid="uid://t13figpro33w" path="res://assets/fireball/B500-3.PNG" id="8_ba0j3"]
-[ext_resource type="Texture2D" uid="uid://c58bv4hhw7xkt" path="res://assets/fireball/B500-4.PNG" id="9_lurao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
 size = Vector2(26, 21)
@@ -98,17 +95,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_6umxm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_0apvr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ba0j3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_lurao")
 }],
-"loop": false,
+"loop": true,
 "name": &"fireball",
 "speed": 5.0
 }]
@@ -123,7 +111,7 @@ shape = SubResource("RectangleShape2D_v8qja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t2bd8")
-animation = &"bat"
+animation = &"fireball"
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 3.0

@@ -27,6 +27,8 @@ var is_stealth = false
 @onready var stealth_timer = $StealthTimer
 
 @onready var health_stat = $Health
+@onready var hurt_flash_timer = $HurtFlashTimer
+var is_hurt = false
 
 const START_SPEED : int = 150
 var health: int = 100
@@ -175,6 +177,9 @@ func handle_hit():
 	if is_dead:
 		return
 	health_stat.health -= 20
+	is_hurt = true
+	$AnimatedSprite2D.modulate = Color(1,0,0) #flash red
+	hurt_flash_timer.start()
 	print("player hit", health_stat.health)
 	if health_stat.health <= 0:
 		die()
@@ -208,3 +213,8 @@ func heal(amount: int) -> void:
 
 func _on_boost_timer_timeout() -> void:
 	speed = START_SPEED
+
+
+func _on_hurt_flash_timer_timeout() -> void:
+	is_hurt = false
+	$AnimatedSprite2D.modulate = Color(1,1,1)
