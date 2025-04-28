@@ -34,10 +34,19 @@ func _physics_process(delta: float) -> void:
 				enemy.move_and_slide()
 				if enemy_velocity.x != 0:
 					enemy.get_node("AnimatedSprite2D").flip_h = enemy_velocity.x < 0
+				if enemy_velocity.length() > 1:
+					if enemy.get_node("AnimatedSprite2D").animation != "walk":
+						enemy.get_node("AnimatedSprite2D").play("walk")
+				else:
+					if enemy.get_node("AnimatedSprite2D").animation != "idle":
+						enemy.get_node("AnimatedSprite2D").play("idle")
 				if enemy.global_position.distance_to(patrol_location) < 5:
 					patrol_location_reached = true
 					enemy_velocity = Vector2.ZERO
 					patrol_timer.start()
+			else:
+				if enemy.get_node("AnimatedSprite2D").animation != "idle":
+					enemy.get_node("AnimatedSprite2D").play("idle")
 		State.ENGAGE:
 			if target and is_instance_valid(target) and is_instance_valid(enemy):
 				var facing_dir = target.global_position.x - enemy.global_position.x
