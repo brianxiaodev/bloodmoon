@@ -125,38 +125,38 @@ position = Vector2(429, 178)
 [node name="Healthpotion2" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(366, -287)
 
-[node name="Healthpotion" parent="." instance=ExtResource("12_87vbj")]
+[node name="Healthpotion6" parent="." instance=ExtResource("12_87vbj")]
 position = Vector2(-530, -218)
 
-[node name="Enemy" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy9" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(-177, -116)
 
-[node name="Enemy5" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy10" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(1027, 91)
 scale = Vector2(5.0625, 5.0625)
 
-[node name="Enemy4" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy11" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(264, -173)
 scale = Vector2(3.375, 3.375)
 
-[node name="Enemy3" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy12" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(-270, 279)
 scale = Vector2(2.25, 2.25)
 
-[node name="Enemy7" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy13" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(444, 329)
 scale = Vector2(2.25, 2.25)
 
-[node name="Enemy8" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy14" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(503, -9)
 scale = Vector2(2.25, 2.25)
 
-[node name="Enemy6" parent="." instance=ExtResource("7_1dman")]
+[node name="Enemy15" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(143, 246)
 
-[node name="GameOver" parent="." instance=ExtResource("13_8hplf")]
+[node name="GameOver2" parent="." instance=ExtResource("13_8hplf")]
 visible = false
 
-[node name="Door" parent="." instance=ExtResource("13_8hplf")]
+[node name="Door2" parent="." instance=ExtResource("13_8hplf")]
 position = Vector2(1240, -415)
 target_scene = ExtResource("14_2wlms")
