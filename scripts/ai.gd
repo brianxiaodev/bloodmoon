@@ -11,7 +11,7 @@ enum State {
 @onready var zone = $PlayerDetectionZone
 @onready var patrol_timer = $PatrolTimer
 
-var current_state = State.PATROL
+var current_state = -1
 var target : CharacterBody2D = null
 
 #PATROL STATE
@@ -22,6 +22,7 @@ var enemy_velocity: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
+	set_state(State.PATROL)
 	zone.body_entered.connect(_on_player_detection_zone_body_entered)
 	zone.body_exited.connect(_on_player_detection_zone_body_exited)
 
@@ -31,6 +32,8 @@ func _physics_process(delta: float) -> void:
 			if not patrol_location_reached:
 				enemy.velocity = enemy_velocity
 				enemy.move_and_slide()
+				if enemy_velocity.x != 0:
+					enemy.get_node("AnimatedSprite2D").flip_h = enemy_velocity.x < 0
 				if enemy.global_position.distance_to(patrol_location) < 5:
 					patrol_location_reached = true
 					enemy_velocity = Vector2.ZERO
@@ -45,8 +48,9 @@ func _physics_process(delta: float) -> void:
 func set_state(new_state: int):
 	if new_state == current_state:
 		return
+		
 	if new_state == State.PATROL:
-		origin = enemy.global_position
+		origin = global_position
 		patrol_timer.start()
 		patrol_location_reached = true
 		
