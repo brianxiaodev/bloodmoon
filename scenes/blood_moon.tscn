@@ -50,6 +50,7 @@ position = Vector2(-524, -285)
 position = Vector2(-126, -42)
 
 [node name="Bats" parent="." instance=ExtResource("8_punxx")]
+visible = false
 position = Vector2(-519, -191)
 collision_layer = 5
 collision_mask = 5

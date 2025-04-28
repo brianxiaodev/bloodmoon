@@ -10,6 +10,7 @@ enum State {
 @onready var enemy = get_parent() as CharacterBody2D
 @onready var zone = $PlayerDetectionZone
 @onready var patrol_timer = $PatrolTimer
+@onready var ui = get_tree().root.get_node("Blood Moon/UI")
 
 var current_state = -1
 var target : CharacterBody2D = null
@@ -71,11 +72,15 @@ func _on_player_detection_zone_body_entered(body: Node2D) -> void:
 	if body is Vampire:
 		target = body
 		set_state(State.ENGAGE)
+		
+		ui.get_node("EnemyHealthBar").visible = true
+		ui.get_node("EnemyHealthBar").value = enemy.get_node("Health").health
 
 func _on_player_detection_zone_body_exited(body: Node2D) -> void:
 	if body is Vampire:
 		target = null
 		set_state(State.PATROL)
+		ui.get_node("EnemyHealthBar").visible = false
 
 func _on_patrol_timer_timeout() -> void:
 	var patrol_range = 50
