@@ -38,14 +38,15 @@ var is_dead = false
 
 
 func _ready():
-	var direction = Vector2.RIGHT
-	var bats_instance = Bats.instantiate()
-	bats_instance.ignore_body = self
-	bats_instance.set_direction(direction)
-	bats_instance.get_node("AnimatedSprite2D").play("bat")
-	bats_instance.get_node("AnimatedSprite2D").scale = Vector2(0.1, 0.1)
-	add_child(bats_instance)
-	bats_instance.global_position = attack_spawn_point.global_position
+	pass
+	#var direction = Vector2.RIGHT
+	#var bats_instance = Bats.instantiate()
+	#bats_instance.ignore_body = self
+	#bats_instance.set_direction(direction)
+	#bats_instance.get_node("AnimatedSprite2D").play("bat")
+	#bats_instance.get_node("AnimatedSprite2D").scale = Vector2(0.1, 0.1)
+	#add_child(bats_instance)
+	#bats_instance.global_position = attack_spawn_point.global_position
 
 
 func _physics_process(_delta: float) -> void:
