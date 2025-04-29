@@ -9,8 +9,10 @@ var stealth_bar
 
 func _ready() -> void:
 	randomize()
+	
 	var health_node = $Vampire/Health
 	ui = ui_scene.instantiate()
+
 	get_node("/root").add_child(ui)
 	
 	var health_bar = ui.get_node("HealthBar")
@@ -18,12 +20,16 @@ func _ready() -> void:
 	player.connect("player_fired_bullet", Callable(bullet_manager, "handle_bullet_spawned"))
 	var success = health_node.health_changed.connect(health_bar.update_health)
 	health_bar.update_health(100)
-	
+		
 	player.connect("stealth_changed", Callable(stealth_bar, "update_stealth"))
 
 func _process(delta):
-	if stealth_bar:
-		stealth_bar.value = player.current_stealth_meter
+	if player and player.is_dead:
+		if ui:
+			ui.visible = false
+	else:
+		if stealth_bar:
+			stealth_bar.value = player.current_stealth_meter
 
 
 func update_powerup_display(powerup_name: String):
