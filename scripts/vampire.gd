@@ -3,6 +3,7 @@ class_name Vampire
 
 signal player_fired_bullet(bullet, position, direction)
 signal stealth_changed(value: float)
+signal shadow_unlocked
 
 @export var Bullet: PackedScene
 @export var Bats: PackedScene
@@ -198,6 +199,7 @@ func activate_dash():
 	
 func activate_shadow():
 	shadow_active = true
+	emit_signal("shadow_unlocked")
 
 func _on_bats_timer_timeout() -> void:
 	#bats_active = false
@@ -256,6 +258,7 @@ func die():
 	if is_dead:
 		return
 	is_dead = true
+	
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.play("death")
 	print("Vampire down.")

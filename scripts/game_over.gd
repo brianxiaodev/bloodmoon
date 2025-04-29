@@ -1,8 +1,12 @@
 extends CanvasLayer
+@onready var audio_control = get_node("/root/AudioControl")
 
 func _ready():
 	set_process_unhandled_input(true)
-
+	if audio_control:
+		audio_control.stop()
+	$AudioStreamPlayer.play() 
+			
 func _unhandled_input(event):
 	if event.is_action_pressed("restart"):
 		print("Restart pressed!") 
