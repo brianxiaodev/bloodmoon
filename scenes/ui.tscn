@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmuy4kg0nn4uf" path="res://scenes/ui.gd" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://dlhnjk1aba7dv" path="res://scenes/healthbar.gd" id="2_x4jx1"]
-[ext_resource type="Script" uid="uid://35frnicwu5jp" path="res://scenes/stealth_bar.gd" id="3_yev5y"]
+[ext_resource type="Script" path="res://scenes/stealth_bar.gd" id="3_yev5y"]
 
 [sub_resource type="Gradient" id="Gradient_nt7q6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.372549, 0.317647, 0.305882, 1)
