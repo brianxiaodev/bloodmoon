@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=17 format=4 uid="uid://ddda0gc2vxlm5"]
+
 
 [ext_resource type="Texture2D" uid="uid://casivbtbpv43m" path="res://assets/spaceship/RetroSpaceHell_PNG.png" id="1_3bmlt"]
 [ext_resource type="Script" uid="uid://bkexqhv32di1a" path="res://scripts/main.gd" id="1_g2hoc"]
@@ -9,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ciwhn70ef8waw" path="res://scenes/bats.tscn" id="6_igmy8"]
 [ext_resource type="Script" uid="uid://gk6bedoyot01" path="res://scripts/level2_scripts/item_level2.gd" id="7_fldb1"]
 [ext_resource type="PackedScene" uid="uid://q5jk6nid3ipf" path="res://scenes/health.tscn" id="7_wdtqu"]
-[ext_resource type="PackedScene" uid="uid://dfyumq44xaxsu" path="res://scenes/ui.tscn" id="8_7qsfm"]
 [ext_resource type="PackedScene" uid="uid://cgrps2fgm3jxq" path="res://scenes/healthpotion.tscn" id="10_k22d5"]
 [ext_resource type="PackedScene" uid="uid://4y67635ci7ss" path="res://scenes/enemy.tscn" id="11_k6a82"]
 [ext_resource type="PackedScene" uid="uid://b3ald5ngtdkny" path="res://scenes/door.tscn" id="12_1sb0y"]
@@ -215,8 +216,6 @@ position = Vector2(135, -186)
 
 [node name="Enemy2" parent="." instance=ExtResource("11_k6a82")]
 position = Vector2(-96, -274)
-
-[node name="UI" parent="." instance=ExtResource("8_7qsfm")]
 
 [node name="Health" parent="." instance=ExtResource("7_wdtqu")]
 
