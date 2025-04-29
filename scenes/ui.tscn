@@ -54,10 +54,14 @@ texture_progress = SubResource("GradientTexture2D_gdt2y")
 script = ExtResource("2_x4jx1")
 
 [node name="PowerupLabel" type="Label" parent="."]
-offset_left = 18.0
-offset_top = 479.0
-offset_right = 377.0
-offset_bottom = 620.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -48.0
+offset_right = 374.0
+offset_bottom = 93.0
+grow_vertical = 0
 text = "Powerups:
 "
 

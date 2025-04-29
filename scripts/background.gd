@@ -11,7 +11,6 @@ func _ready():
 	fade_in()  
 
 func _process(delta):
-	print(volume_db)
 	if fading:
 		if volume_db < target_volume_db:
 			volume_db = min(volume_db + fade_speed * delta * 10, target_volume_db)
