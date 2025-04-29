@@ -41,5 +41,7 @@ func _on_body_entered(body: Node2D) -> void:
 		print("Calling handle_hit() on", body.name)
 		body.handle_hit()
 		queue_free()
+	if body is TileMapLayer:
+		queue_free()
 	else:
 		print("Hit", body.name, "but no handle_hit method")
