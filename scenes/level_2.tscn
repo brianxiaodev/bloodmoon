@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://ddda0gc2vxlm5"]
+[gd_scene load_steps=17 format=4 uid="uid://ddda0gc2vxlm5"]
 
 [ext_resource type="Texture2D" uid="uid://casivbtbpv43m" path="res://assets/spaceship/RetroSpaceHell_PNG.png" id="1_3bmlt"]
 [ext_resource type="Script" uid="uid://bkexqhv32di1a" path="res://scripts/main.gd" id="1_g2hoc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cgrps2fgm3jxq" path="res://scenes/healthpotion.tscn" id="10_k22d5"]
 [ext_resource type="PackedScene" uid="uid://4y67635ci7ss" path="res://scenes/enemy.tscn" id="11_k6a82"]
 [ext_resource type="PackedScene" uid="uid://b3ald5ngtdkny" path="res://scenes/door.tscn" id="12_1sb0y"]
+[ext_resource type="PackedScene" uid="uid://e1sv6ceayn7o" path="res://scenes/win.tscn" id="14_fldb1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jm1iu"]
 texture = ExtResource("1_3bmlt")
@@ -262,4 +263,7 @@ position = Vector2(-526, 398)
 position = Vector2(956, 77)
 
 [node name="GameOver" parent="." instance=ExtResource("12_1sb0y")]
+visible = false
+
+[node name="win" parent="." instance=ExtResource("14_fldb1")]
 visible = false
