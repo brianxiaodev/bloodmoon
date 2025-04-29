@@ -24,12 +24,10 @@ position = Vector2(-417, -188)
 zoom = Vector2(2, 2)
 
 [node name="Bullet" parent="." instance=ExtResource("6_3kn01")]
+visible = true
 
 [node name="Bats" parent="." instance=ExtResource("8_punxx")]
-visible = false
 position = Vector2(-519, -191)
-collision_layer = 5
-collision_mask = 5
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("4_q6r7r")
