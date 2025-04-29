@@ -24,3 +24,9 @@ func _process(delta):
 func fade_in():
 	target_volume_db = 0  
 	fading = true
+
+func play_game_over_music():
+	stream = preload("res://assets/gameover.mp3")
+	volume_db = -80 
+	playing = true
+	fade_in()
