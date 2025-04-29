@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bwnmps0tmudcj"]
 
-[ext_resource type="Script" uid="uid://bkexqhv32di1a" path="res://scripts/main.gd" id="1_3kn01"]
+[ext_resource type="Script" uid="uid://c45cj1pcrrdt0" path="res://scenes/main.gd" id="1_87vbj"]
 [ext_resource type="PackedScene" uid="uid://p7oobg705p7j" path="res://scenes/map.tscn" id="2_3kn01"]
 [ext_resource type="PackedScene" uid="uid://c5ikb3enwxmpq" path="res://scenes/vampire.tscn" id="2_oujrd"]
 [ext_resource type="Script" uid="uid://bipf87ovg1unt" path="res://scripts/bullet_manager.gd" id="4_q6r7r"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ddda0gc2vxlm5" path="res://scenes/level_2.tscn" id="14_2wlms"]
 
 [node name="Blood Moon" type="Node2D"]
-script = ExtResource("1_3kn01")
+script = ExtResource("1_87vbj")
 
 [node name="Map" parent="." instance=ExtResource("2_3kn01")]
 

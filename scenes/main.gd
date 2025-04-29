@@ -3,10 +3,8 @@ extends Node2D
 @onready var bullet_manager = $BulletManager
 @onready var player = $Vampire
 @onready var ui_scene = preload("res://scenes/ui.tscn")  # Preload the UI scene
-var enemies = []
- 
-@onready var win_screen = preload("res://scenes/win.tscn")
-
+#var enemies = []
+#@onready var win_screen = preload("res://scenes/win.tscn")
 
 var collected_powerups: Array[String] = [] 
 var ui
@@ -15,10 +13,10 @@ var stealth_bar
 func _ready() -> void:
 	randomize()
 	
-	for child in get_children():
-		if child is Enemy:
-			enemies.append(child)
-			child.connect("tree_exited", Callable(self, "_on_enemy_died"))
+	#for child in get_children():
+		#if child is Enemy:
+			#enemies.append(child)
+			#child.connect("tree_exited", Callable(self, "_on_enemy_died"))
 	
 	var health_node = $Vampire/Health
 	ui = ui_scene.instantiate()
@@ -33,25 +31,24 @@ func _ready() -> void:
 
 	var success = health_node.health_changed.connect(health_bar.update_health)
 	health_bar.update_health(100)
-	
 	player.connect("stealth_changed", Callable(stealth_bar, "update_stealth"))
 
-func _on_enemy_died():
-	check_win_condition()
+#func _on_enemy_died():
+	#check_win_condition()
 
-func check_win_condition():
-	# Remove any enemies that are no longer inside the tree
-	enemies = enemies.filter(func(e): return e.is_inside_tree())
-	
-	if enemies.is_empty():
-		show_win_screen()
+#func check_win_condition():
+	## Remove any enemies that are no longer inside the tree
+	#enemies = enemies.filter(func(e): return e.is_inside_tree())
+	#
+	#if enemies.is_empty():
+		#show_win_screen()
 
-func show_win_screen():
-	if ui:
-		ui.visible = false
-		
-	var won = win_screen.instantiate()
-	add_child(won)
+#func show_win_screen():
+	#if ui:
+		#ui.visible = false
+		#
+	#var won = win_screen.instantiate()
+	#add_child(won)
 	#win_image_node.position = get_viewport_rect().size / 2
 	#win_image_node.offset = win_screen.get_size() / -2
 
