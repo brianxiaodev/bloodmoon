@@ -34,7 +34,7 @@ position = Vector2(-519, -191)
 script = ExtResource("4_q6r7r")
 
 [node name="Enemy5" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(-31, 275)
+position = Vector2(-78, 265)
 scale = Vector2(2.5, 2.5)
 
 [node name="Item7" parent="." instance=ExtResource("8_1dman")]
@@ -71,17 +71,17 @@ position = Vector2(366, -287)
 position = Vector2(-530, -218)
 
 [node name="Enemy10" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(1027, 91)
+position = Vector2(980, -133)
 scale = Vector2(5.0625, 5.0625)
 fire_rate = 0.5
 
 [node name="Enemy11" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(264, -173)
+position = Vector2(227, -183)
 scale = Vector2(3.375, 3.375)
 fire_rate = 1.0
 
 [node name="Enemy12" parent="." instance=ExtResource("7_1dman")]
-position = Vector2(-270, 279)
+position = Vector2(-416, 228)
 scale = Vector2(2.25, 2.25)
 
 [node name="Enemy13" parent="." instance=ExtResource("7_1dman")]
