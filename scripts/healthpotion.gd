@@ -7,8 +7,6 @@ func _ready() -> void:
 	$AnimatedSprite2D.play()
 
 func _on_body_entered(body: Node2D) -> void:
-	if player:
-		print("found player")
-	if body == player:
+	if body.has_method("heal"):
 		body.heal(heal_amount)
-		queue_free()
+	queue_free()

@@ -49,7 +49,7 @@ var is_attacking = false
 
 
 func _ready():
-	bats_active = true
+	#bats_active = true
 	pass
 
 func _physics_process(_delta: float) -> void:
