@@ -91,6 +91,9 @@ scale = Vector2(2.25, 2.25)
 [node name="Enemy15" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(143, 246)
 
+[node name="Enemy" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(-232, -105)
+
 [node name="GameOver2" parent="." instance=ExtResource("13_8hplf")]
 visible = false
 
