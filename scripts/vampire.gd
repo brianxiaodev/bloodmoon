@@ -49,6 +49,7 @@ var is_attacking = false
 
 
 func _ready():
+	bats_active = true
 	pass
 
 func _physics_process(_delta: float) -> void:
@@ -160,6 +161,8 @@ func _on_dash_cooldown_timeout() -> void:
 	pass
 	
 func start_stealth():
+	if not shadow_active:
+		return
 	if current_stealth_meter > 0 and not is_stealth:
 		print("start repeated")
 		is_stealth = true

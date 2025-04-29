@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ciwhn70ef8waw"]
 
-[ext_resource type="Script" path="res://scripts/bats.gd" id="1_1o4ep"]
+[ext_resource type="Script" uid="uid://nfmvk0ta2ede" path="res://scripts/bats.gd" id="1_1o4ep"]
 [ext_resource type="Texture2D" uid="uid://cr8ngya30llii" path="res://assets/vampire/projectile bat_36px.png" id="1_awo2f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1o4ep"]
@@ -48,6 +48,8 @@ animations = [{
 size = Vector2(27, 12)
 
 [node name="Bats" type="Area2D"]
+collision_layer = 5
+collision_mask = 15
 script = ExtResource("1_1o4ep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -60,5 +62,7 @@ position = Vector2(9, 13)
 shape = SubResource("RectangleShape2D_eeqqe")
 
 [node name="KillTimer" type="Timer" parent="."]
+wait_time = 2.0
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]
