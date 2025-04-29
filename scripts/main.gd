@@ -17,7 +17,10 @@ func _ready() -> void:
 	
 	var health_bar = ui.get_node("HealthBar")
 	stealth_bar = ui.get_node("StealthBar")
+	stealth_bar.visible = false 
 	player.connect("player_fired_bullet", Callable(bullet_manager, "handle_bullet_spawned"))
+	player.connect("shadow_unlocked", Callable(self, "on_shadow_unlocked"))
+
 	var success = health_node.health_changed.connect(health_bar.update_health)
 	health_bar.update_health(100)
 		
@@ -35,3 +38,7 @@ func _process(delta):
 func update_powerup_display(powerup_name: String):
 	if ui:
 		ui.update_powerup_display(powerup_name)
+
+func on_shadow_unlocked():
+	if stealth_bar:
+		stealth_bar.visible = true

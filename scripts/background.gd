@@ -19,6 +19,7 @@ func _process(delta):
 		
 		if volume_db == target_volume_db:
 			fading = false
+			
 
 func fade_in():
 	target_volume_db = 0  
