@@ -14,6 +14,10 @@ config/name="bloodmoon"
 run/main_scene="uid://bpj1qniayvxu0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+AudioControl="*res://scenes/audio_control.tscn"
+
 [input]
 
 ui_select={

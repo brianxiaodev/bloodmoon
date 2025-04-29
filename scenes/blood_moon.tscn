@@ -26,10 +26,7 @@ zoom = Vector2(2, 2)
 [node name="Bullet" parent="." instance=ExtResource("6_3kn01")]
 
 [node name="Bats" parent="." instance=ExtResource("8_punxx")]
-visible = false
 position = Vector2(-519, -191)
-collision_layer = 5
-collision_mask = 5
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("4_q6r7r")
@@ -74,10 +71,12 @@ position = Vector2(-530, -218)
 [node name="Enemy10" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(1027, 91)
 scale = Vector2(5.0625, 5.0625)
+fire_rate = 0.5
 
 [node name="Enemy11" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(264, -173)
 scale = Vector2(3.375, 3.375)
+fire_rate = 1.0
 
 [node name="Enemy12" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(-270, 279)
@@ -93,6 +92,10 @@ scale = Vector2(2.25, 2.25)
 
 [node name="Enemy15" parent="." instance=ExtResource("7_1dman")]
 position = Vector2(143, 246)
+fire_rate = 0.7
+
+[node name="Enemy" parent="." instance=ExtResource("7_1dman")]
+position = Vector2(-232, -105)
 
 [node name="GameOver2" parent="." instance=ExtResource("13_8hplf")]
 visible = false
