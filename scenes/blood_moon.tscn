@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bwnmps0tmudcj"]
 
-[ext_resource type="Script" uid="uid://c45cj1pcrrdt0" path="res://scenes/main.gd" id="1_87vbj"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_87vbj"]
 [ext_resource type="PackedScene" uid="uid://p7oobg705p7j" path="res://scenes/map.tscn" id="2_3kn01"]
 [ext_resource type="PackedScene" uid="uid://c5ikb3enwxmpq" path="res://scenes/vampire.tscn" id="2_oujrd"]
 [ext_resource type="Script" uid="uid://bipf87ovg1unt" path="res://scripts/bullet_manager.gd" id="4_q6r7r"]
@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bom6v6ykibptf" path="res://scenes/item.tscn" id="8_1dman"]
 [ext_resource type="PackedScene" uid="uid://ciwhn70ef8waw" path="res://scenes/bats.tscn" id="8_punxx"]
 [ext_resource type="PackedScene" uid="uid://dtgtookoxhgn8" path="res://scenes/game_over.tscn" id="10_87vbj"]
+[ext_resource type="PackedScene" uid="uid://e1sv6ceayn7o" path="res://scenes/win.tscn" id="12_8hplf"]
 [ext_resource type="PackedScene" uid="uid://cgrps2fgm3jxq" path="res://scenes/healthpotion.tscn" id="12_87vbj"]
 [ext_resource type="PackedScene" uid="uid://b3ald5ngtdkny" path="res://scenes/door.tscn" id="13_8hplf"]
-[ext_resource type="PackedScene" uid="uid://ddda0gc2vxlm5" path="res://scenes/level_2.tscn" id="14_2wlms"]
 
 [node name="Blood Moon" type="Node2D"]
 script = ExtResource("1_87vbj")
@@ -103,4 +103,4 @@ visible = false
 
 [node name="Door2" parent="." instance=ExtResource("13_8hplf")]
 position = Vector2(1240, -415)
-target_scene = ExtResource("14_2wlms")
+target_scene = ExtResource("12_8hplf")

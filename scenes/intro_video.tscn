@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpj1qniayvxu0"]
 
 [ext_resource type="Script" uid="uid://bii2utnd2a58e" path="res://scripts/intro_video.gd" id="1_8ofvi"]
-[ext_resource type="VideoStream" uid="uid://bgps4c6yq8dj7" path="res://assets/Blood Moon Intro Ogg.ogv" id="1_mgkwl"]
-[ext_resource type="Script" path="res://scripts/skip_label.gd" id="2_mgkwl"]
+[ext_resource type="VideoStream" uid="uid://dnjo785g628nt" path="res://assets/Blood Moon Intro Ogg.ogv" id="1_mgkwl"]
+[ext_resource type="Script" uid="uid://cdfsoiovfh2k1" path="res://scripts/skip_label.gd" id="2_mgkwl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iq608"]
 font_size = 64
