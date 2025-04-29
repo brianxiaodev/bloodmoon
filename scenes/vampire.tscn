@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c5ikb3enwxmpq"]
+[gd_scene load_steps=42 format=3 uid="uid://c5ikb3enwxmpq"]
 
 [ext_resource type="Script" uid="uid://db05lyij832rv" path="res://scripts/vampire.gd" id="1_1ap6k"]
 [ext_resource type="Texture2D" uid="uid://llxuq0dqhiid" path="res://assets/vampire/vampr_color03_skin tone.png" id="1_j3v10"]
@@ -262,6 +262,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3v10"]
 size = Vector2(22, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anhdl"]
+size = Vector2(19, 37)
+
 [node name="Vampire" type="CharacterBody2D"]
 top_level = true
 light_mask = 2
@@ -307,19 +310,25 @@ one_shot = true
 [node name="DashCooldown" type="Timer" parent="."]
 one_shot = true
 
-[node name="StealthTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [node name="Health" parent="." instance=ExtResource("3_qors7")]
 
 [node name="HurtFlashTimer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
+
+[node name="StealthCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StealthCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -4.5)
+shape = SubResource("RectangleShape2D_anhdl")
+disabled = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="BatsCooldown" to="." method="_on_bats_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
-[connection signal="timeout" from="StealthTimer" to="." method="_on_stealth_timer_timeout"]
 [connection signal="timeout" from="HurtFlashTimer" to="." method="_on_hurt_flash_timer_timeout"]
+[connection signal="timeout" from="StealthCooldown" to="." method="_on_stealth_cooldown_timeout"]

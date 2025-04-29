@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfyumq44xaxsu"]
+[gd_scene load_steps=12 format=3 uid="uid://dfyumq44xaxsu"]
 
-[ext_resource type="Script" uid="uid://dlhnjk1aba7dv" path="res://scenes/healthbar.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://cmuy4kg0nn4uf" path="res://scenes/ui.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://dlhnjk1aba7dv" path="res://scenes/healthbar.gd" id="2_x4jx1"]
+[ext_resource type="Script" uid="uid://35frnicwu5jp" path="res://scenes/stealth_bar.gd" id="3_yev5y"]
 
 [sub_resource type="Gradient" id="Gradient_nt7q6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.372549, 0.317647, 0.305882, 1)
@@ -20,7 +22,24 @@ width = 256
 height = 32
 fill_to = Vector2(1, 1)
 
+[sub_resource type="Gradient" id="Gradient_x4jx1"]
+colors = PackedColorArray(0, 0, 0, 1, 0.299547, 0.299547, 0.299547, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yev5y"]
+gradient = SubResource("Gradient_x4jx1")
+width = 256
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_gdt2y"]
+colors = PackedColorArray(0, 0.584314, 0.870588, 1, 0.356863, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wm3ai"]
+gradient = SubResource("Gradient_gdt2y")
+width = 256
+height = 32
+
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_nt7q6")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 anchors_preset = -1
@@ -32,4 +51,21 @@ offset_right = -21132.3
 offset_bottom = -13959.6
 texture_under = SubResource("GradientTexture2D_x4jx1")
 texture_progress = SubResource("GradientTexture2D_gdt2y")
-script = ExtResource("1_nt7q6")
+script = ExtResource("2_x4jx1")
+
+[node name="PowerupLabel" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 479.0
+offset_right = 377.0
+offset_bottom = 620.0
+text = "Powerups:
+"
+
+[node name="StealthBar" type="TextureProgressBar" parent="."]
+offset_left = 18.0
+offset_top = 67.0
+offset_right = 274.0
+offset_bottom = 131.0
+texture_under = SubResource("GradientTexture2D_yev5y")
+texture_progress = SubResource("GradientTexture2D_wm3ai")
+script = ExtResource("3_yev5y")
